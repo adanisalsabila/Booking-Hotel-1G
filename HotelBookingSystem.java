@@ -28,7 +28,8 @@ public class HotelBookingSystem {
         
          // Output detail booking
          System.out.println("\nDetail Booking:");
-        System.out.println("Tipe Kamar: " + tipeKamar);
+         System.out.println("Nama Pemesan: " + namaPemesan);
+         System.out.println("Tipe Kamar: " + tipeKamar);
          System.out.println("Alat Transaksi: " + alatTransaksi);
          System.out.println("Jumlah Malam Menginap: " + jumlahMalam);
          System.out.println("Harga Kamar per Malam: Rp" + hargaPerMalam);
@@ -46,7 +47,7 @@ public class HotelBookingSystem {
          // Tutup input
          input.close();
      }
-         System.out.println("Nama Pemesan: " + namaPemesan);
+         
  
  
  
