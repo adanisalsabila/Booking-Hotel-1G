@@ -11,7 +11,7 @@ public class HotelBookingSystem {
         double hargaPerMalam = 750000; // Harga kamar per malam
         
         // Input data dari pengguna
-        System.out.println("Selamat datang di sistem booking hotel!");
+        System.out.println("Selamat datang di Ijen Suites Hotel!");
         System.out.print("Masukkan nama pemesan: ");
         namaPemesan = input.nextLine();
        System.out.print("Masukkan tipe kamar (superior/president): ");
