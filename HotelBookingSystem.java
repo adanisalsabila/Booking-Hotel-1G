@@ -28,6 +28,24 @@ public class HotelBookingSystem {
         
          // Output detail booking
          System.out.println("\nDetail Booking:");
+        System.out.println("Tipe Kamar: " + tipeKamar);
+         System.out.println("Alat Transaksi: " + alatTransaksi);
+         System.out.println("Jumlah Malam Menginap: " + jumlahMalam);
+         System.out.println("Harga Kamar per Malam: Rp" + hargaPerMalam);
+         System.out.println("Total Biaya: Rp" + totalBiaya);
+         
+         // Proses pembayaran
+         if (pembayaran >= totalBiaya) {
+             double kembalian = pembayaran - totalBiaya;
+             System.out.println("Pembayaran diterima. Kembalian: Rp" + kembalian);
+             System.out.println("Terima kasih telah melakukan booking!");
+         } else {
+             System.out.println("Pembayaran tidak mencukupi. Silakan bayar sesuai total biaya.");
+         }
+         
+         // Tutup input
+         input.close();
+     }
          System.out.println("Nama Pemesan: " + namaPemesan);
  
  
