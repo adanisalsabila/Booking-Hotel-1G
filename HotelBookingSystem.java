@@ -87,3 +87,18 @@ public class HotelBookingSystem {
             int pilihanLayanan = Integer.parseInt(service);
             totalLayanan += hargaLayanan[pilihanLayanan - 1];
         }
+// Menghitung total biaya
+        double totalBiaya = selectedRoomPrice + totalLayanan;
+
+        // Menampilkan rincian pemesanan
+        System.out.println("\nRincian Pemesanan:");
+        System.out.println("Tipe Kamar: " + selectedRoomType);
+        System.out.println("Harga Kamar: $" + selectedRoomPrice);
+        System.out.println("Layanan Tambahan:");
+        for (String service : selectedServices) {
+            int pilihanLayanan = Integer.parseInt(service);
+            System.out.println("- " + layananTambahan[pilihanLayanan - 1] + " - $" + hargaLayanan[pilihanLayanan - 1]);
+        }
+        System.out.println("Total Biaya: $" + totalBiaya);
+    }
+}
