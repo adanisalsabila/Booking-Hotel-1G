@@ -74,3 +74,16 @@ public class HotelBookingSystem {
         int pilihanKamar = scanner.nextInt();
         String selectedRoomType = tipeKamar[pilihanKamar - 1];
         double selectedRoomPrice = hargaKamar[pilihanKamar - 1];
+        // Memilih layanan tambahan
+        double totalLayanan = 0.0;
+        System.out.println("Pilih layanan tambahan (pisahkan dengan spasi):");
+        for (int i = 0; i < layananTambahan.length; i++) {
+            System.out.println(i + 1 + ". " + layananTambahan[i] + " - $" + hargaLayanan[i]);
+        }
+        scanner.nextLine(); // membersihkan buffer
+        String[] selectedServices = scanner.nextLine().split(" ");
+
+        for (String service : selectedServices) {
+            int pilihanLayanan = Integer.parseInt(service);
+            totalLayanan += hargaLayanan[pilihanLayanan - 1];
+        }
