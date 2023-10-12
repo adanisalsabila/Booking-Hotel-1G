@@ -48,7 +48,10 @@ public class HotelBookingSystem {
          input.close();
      }
          
- 
- 
- 
     }
+if (pembayaran >= totalBiaya) {
+             double kembalian = pembayaran - totalBiaya;
+             System.out.println("Pembayaran diterima. Kembalian: Rp" + kembalian);
+             System.out.println("Terima kasih telah melakukan booking!");
+         } else {
+             System.out.println("Pembayaran tidak mencukupi. Silakan bayar sesuai total biaya.")
