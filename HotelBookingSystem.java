@@ -14,7 +14,7 @@ public class HotelBookingSystem {
         System.out.println("Selamat datang di Ijen Suites Hotel!");
         System.out.print("Masukkan nama pemesan: ");
         namaPemesan = input.nextLine();
-       System.out.print("Masukkan tipe kamar (superior/president): ");
+       System.out.print("Masukkan tipe kamar (superior/president/deluxe): ");
         tipeKamar = input.nextLine();
         System.out.print("Masukkan alat transaksi (cc/cash/dll.): ");
         alatTransaksi = input.nextLine();
@@ -55,3 +55,22 @@ if (pembayaran >= totalBiaya) {
              System.out.println("Terima kasih telah melakukan booking!");
          } else {
              System.out.println("Pembayaran tidak mencukupi. Silakan bayar sesuai total biaya.")
+                 import java.util.Scanner;
+
+public class HotelBookingSystem {
+    static String[] tipeKamar = {"Superior", "Deluxe", "President Suite"};
+    static double[] hargaKamar = {750.0, 500.0, 2000.0};
+    static String[] layananTambahan = {"Extra Bed", "Makanan"};
+    static double[] hargaLayanan = {10.0, 20.0};
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Memilih tipe kamar
+        System.out.println("Pilih tipe kamar:");
+        for (int i = 0; i < tipeKamar.length; i++) {
+            System.out.println(i + 1 + ". " + tipeKamar[i] + " - $" + hargaKamar[i]);
+        }
+        int pilihanKamar = scanner.nextInt();
+        String selectedRoomType = tipeKamar[pilihanKamar - 1];
+        double selectedRoomPrice = hargaKamar[pilihanKamar - 1];
