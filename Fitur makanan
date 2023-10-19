@@ -1,0 +1,39 @@
+import java.util.Scanner;
+
+public class TugasKelompokP7 {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        boolean pesanLagi = false;
+        String pesanan = "";
+
+        do {
+            System.out.println("Menu Makanan:");
+            System.out.println("1. Chicken Cordon Bleu");
+            System.out.println("2. Mi Ayam");
+            System.out.println("Pilih nomor menu makanan yang ingin Anda pesan: ");
+            int pilihan = scanner.nextInt();
+
+            switch (pilihan) {
+
+                case 1:
+                    pesanan = "Chicken Cordon Bleu";
+                    break;
+                case 2:
+                    pesanan = "Mi Ayam";
+                    break;
+                default:
+                    System.out.println("Menu tidak valid. Silakan pilih kembali.");
+                    continue;
+            }
+
+            System.out.println("Anda memesan: " + pesanan);
+            System.out.print("Apakah Anda ingin memesan lagi? (ya/tidak): ");
+            String jawaban = scanner.next();
+
+            pesanLagi = jawaban.equalsIgnoreCase("ya");
+        } while (pesanLagi);
+
+        System.out.println("Terima kasih atas pesanannya!");
+        scanner.close();
+    }
+}
