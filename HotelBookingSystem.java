@@ -45,3 +45,47 @@ public class HotelBookingSystem {
                 System.out.println("Inputan salah");
             }
         }
+
+
+
+  //
+        // Memilih layanan tambahan
+
+        System.out.println("Pilih layanan tambahan :");
+        for (int i = 0; i < layananTambahan.length; i++) {
+            if (layananTambahan[i] != null)
+                System.out.println(i + 1 + ". " + layananTambahan[i] + " - $" + hargaLayanan[i]);
+        }
+        System.out.println("3. skip");
+
+        input.nextLine(); // membersihkan buffer
+
+        int i = 0;
+        while (lanjut2 && i < layananTambahan.length - 1) {
+            System.out.println("Masukkan angka untuk memilih :");
+            pilihanLayanan[i] = input.nextInt();
+
+            if (pilihanLayanan[i] == 3) {
+                lanjut2 = false;
+            }
+            totalLayanan += hargaLayanan[pilihanLayanan[i] - 1];
+
+            input.nextLine();
+            i++;
+
+        }
+
+        // input jumlah malam, allat transaksi, nominal pembayaran
+
+        System.out.print("Masukkan alat transaksi (cc/cash/dll.): ");
+        alatTransaksi = input.nextLine();
+        if (alatTransaksi.equalsIgnoreCase("cc")) {
+            System.out.print("Masukkan no rekening anda: ");
+            noRekening = input.nextInt();
+        }
+        System.out.print("Masukkan jumlah malam menginap: ");
+        jumlahMalam = input.nextInt();
+
+        System.out.print("Masukkan nominal pembayaran: ");
+        pembayaran = input.nextDouble();
+
