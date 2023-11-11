@@ -89,3 +89,45 @@ public class HotelBookingSystem {
         System.out.print("Masukkan nominal pembayaran: ");
         pembayaran = input.nextDouble();
 
+        // Proses perhitungan total biaya
+        totalBiaya = jumlahMalam * selectedRoomPrice + totalLayanan;
+
+        // Output detail booking
+        System.out.println("\nDetail Booking:");
+        System.out.println("Nama Pemesan: " + namaPemesan);
+        System.out.println("Tipe Kamar: " + selectedRoomType);
+        System.out.println("Harga Kamar : Rp" + selectedRoomPrice);
+        System.out.println("Layanan Tambahan:");
+        i = 0;
+        while (totalLayanan != 0 | i < layananTambahan.length) {
+            // int pilihanLayanan = scanner.nextInt();
+            for (i = 0; i < pilihanLayanan.length; i++) {
+                if (layananTambahan[i] != null) {
+                    System.out.println("- " + layananTambahan[pilihanLayanan[i] - 1] + " - $"  + hargaLayanan[pilihanLayanan[i] - 1]);
+                }
+            }
+            break;
+        }
+        System.out.println("Alat Transaksi: " + alatTransaksi);
+        if (alatTransaksi.equalsIgnoreCase("cc")) {
+            System.out.println("No Rekening Anda : " + noRekening);
+        }
+        System.out.println("Jumlah Malam Menginap: " + jumlahMalam);
+        System.out.println("Total Biaya: Rp" + totalBiaya);
+
+        // Proses pembayaran
+        if (pembayaran >= totalBiaya) {
+            kembalian = pembayaran - totalBiaya;
+            System.out.println("Pembayaran diterima. Kembalian: Rp" + kembalian);
+            System.out.println("Terima kasih telah melakukan booking!");
+        } else {
+            System.out.println("Pembayaran tidak mencukupi. Silakan bayar sesuai total biaya.");
+        }
+
+        // Tutup input
+        input.close();
+    }
+}
+
+
+
