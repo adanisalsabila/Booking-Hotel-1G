@@ -4,7 +4,7 @@ import java.util.Scanner;
 public class testFiturBooking {
 
     public static void main(String[] args) {
-        String[] tipeKamar = { "Superior" , "Deluxe", "President Suite" };
+        String[] tipeKamar = { "Superior", "Deluxe", "President Suite" };
         double[] hargaPerMalam = { 750000, 500000, 2000000 };
         String[] layananTambahan = { "Extra Bed", "Makanan", null };
         double[] hargaLayanan = { 50000, 100000, 0 };
@@ -90,19 +90,20 @@ public class testFiturBooking {
 
         // Proses perhitungan total biaya
         totalBiaya = jumlahMalam * selectedRoomPrice + totalLayanan;
-System.out.println(totalLayanan);
+        System.out.println(totalLayanan);
         // Output detail booking
         System.out.println("\nDetail Booking:");
         System.out.println("Nama Pemesan: " + namaPemesan);
         System.out.println("Tipe Kamar: " + selectedRoomType);
         System.out.println("Harga Kamar : Rp" + selectedRoomPrice);
         System.out.println("Layanan Tambahan:");
-         i = 0;
+        i = 0;
         while (totalLayanan != 0 | i < layananTambahan.length) {
             // int pilihanLayanan = scanner.nextInt();
             for (i = 0; i < pilihanLayanan.length; i++) {
-                if ( totalLayanan != 0 ) {
-                    System.out.println("- " + layananTambahan[pilihanLayanan[i] - 1] + " - $"  + hargaLayanan[pilihanLayanan[i] - 1]);
+                if (totalLayanan != 0) {
+                    System.out.println("- " + layananTambahan[pilihanLayanan[i] - 1] + " - $"
+                            + hargaLayanan[pilihanLayanan[i] - 1]);
                 }
             }
             break;
