@@ -1,0 +1,40 @@
+import java.util.Scanner;
+
+public class fiturKritikSaran {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+         String sentencesList[] = new String[10];
+
+        System.out.println("Welcome to the Sentence Input System!");
+
+        while (true) {
+            System.out.println("\nEnter a sentence (type 'exit' to quit):");
+            String sentence = scanner.nextLine();
+
+            if (sentence.equalsIgnoreCase("exit")) {
+                break;
+            }
+
+            if (sentence == null) {
+                System.out.println("Please enter a valid sentence.");
+                continue;
+            }
+
+            for (int i = 0; i < sentencesList.length; i++) {
+                
+                 sentencesList[i] = sentence;
+
+                System.out.println("Sentence saved!");
+            }
+
+            // Menampilkan kalimat yang sudah diinput
+            System.out.println("\nSentences entered so far:");
+            for (String savedSentence : sentencesList) {
+                System.out.println("- " + savedSentence);
+            }
+        }
+
+        System.out.println("\nGoodbye!");
+        scanner.close();
+    }
+}
