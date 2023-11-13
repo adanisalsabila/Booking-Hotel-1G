@@ -4,7 +4,7 @@ import java.util.Scanner;
 public class testFiturBooking {
 
     public static void main(String[] args) {
-        String[] tipeKamar = { "Superior", "Deluxe", "President Suite" };
+        String[] tipeKamar = { "Superior" , "Deluxe", "President Suite" };
         double[] hargaPerMalam = { 750000, 500000, 2000000 };
         String[] layananTambahan = { "Extra Bed", "Makanan", null };
         double[] hargaLayanan = { 50000, 100000, 0 };
