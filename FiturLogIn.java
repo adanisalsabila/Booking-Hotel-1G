@@ -5,6 +5,7 @@ public class FiturLogIn {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int pilihMenu;
+        int[][] roomAvailability = new int[2][10];
         int[] superiorRoomsAvailable = new int[10];
         int[] presidentRoomsAvailable = new int[10];
         int[] jenisKamar = new int[2];
