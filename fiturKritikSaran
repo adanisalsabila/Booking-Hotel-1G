@@ -5,10 +5,10 @@ public class fiturKritikSaran {
         Scanner scanner = new Scanner(System.in);
          String sentencesList[] = new String[10];
 
-        System.out.println("Welcome to the Sentence Input System!");
+        System.out.println("Selamat datang di halaman kritik saran");
 
         while (true) {
-            System.out.println("\nEnter a sentence (type 'exit' to quit):");
+            System.out.println("\nSilahkan ketik kalimat (type 'exit' to quit):");
             String sentence = scanner.nextLine();
 
             if (sentence.equalsIgnoreCase("exit")) {
@@ -16,7 +16,7 @@ public class fiturKritikSaran {
             }
 
             if (sentence == null) {
-                System.out.println("Please enter a valid sentence.");
+                System.out.println("Tolong masukan kalimat yang valid.");
                 continue;
             }
 
@@ -24,17 +24,17 @@ public class fiturKritikSaran {
                 
                  sentencesList[i] = sentence;
 
-                System.out.println("Sentence saved!");
+                System.out.println("Kalimat disimpan!");
             }
 
             // Menampilkan kalimat yang sudah diinput
-            System.out.println("\nSentences entered so far:");
+            System.out.println("\nList kritik dan saran:");
             for (String savedSentence : sentencesList) {
                 System.out.println("- " + savedSentence);
             }
         }
 
-        System.out.println("\nGoodbye!");
+        System.out.println("\nTerimakasih!");
         scanner.close();
     }
 }
