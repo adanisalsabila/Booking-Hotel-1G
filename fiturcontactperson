@@ -1,0 +1,14 @@
+ import java.util.Scanner;
+public class contactperson {
+    public static void main(String[] args) {
+    System.out.println("\nInfo Contact Person:");
+
+        String nama = "Hotel Ijen Suites";
+        String telepon = "08123456789";
+        String email = "Ijensuites@gmail.com";
+
+        System.out.println("Nama: " + nama);
+        System.out.println("Nomor Telepon: " + telepon);
+        System.out.println("Alamat Email: " + email);
+    }
+}

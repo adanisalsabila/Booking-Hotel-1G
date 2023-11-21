@@ -101,10 +101,51 @@ public class FiturLogIn {
                 
                 break;
             case 5:
-                
+                String alamatHotel;
+        int cekLokasiHotel;
+
+        System.out.println("Selamat datang di Hotel XYZ!");
+        System.out.println("Silakan pilih opsi:");
+        System.out.println("1. Cek Lokasi Hotel");
+        
+        int option = sc.nextInt();
+
+        switch (option) {
+            case 1:
+            System.out.println("===============================================================================");
+            System.out.println("Jalan Ijen Nirwana Raya Blok A No.16, Malang Center, Malang, Indonesia, 65116 ");
+            System.out.println("===============================================================================");
+                break;
+            default:
+                System.out.println("Opsi tidak valid.");
+        }
+    }
+
+    private static void checkHotelLocation(double latitude, double longitude) {
+        System.out.println("Lokasi Hotel:");
+        System.out.println("Latitude: " + latitude);
+        System.out.println("Longitude: " + longitude);
+    }
+}
+
+
                 break;
             case 6:
-                
+                 System.out.println("Masukkan nama Anda: ");
+        String nama = scanner.nextLine();
+
+        System.out.println("Masukkan fitur yang ingin Anda kritikkan: ");
+        String kritik = scanner.nextLine();
+
+        System.out.println("Masukkan saran fitur yang ingin Anda usulkan: ");
+        String saran = scanner.nextLine();
+
+        System.out.println("\nTerima kasih atas feedback Anda!");
+        System.out.println("Nama: " + nama);
+        System.out.println("Kritik: " + kritik);
+        System.out.println("Saran: " + saran);
+    }
+}
                 break;
             case 7:
                 
