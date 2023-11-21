@@ -1,40 +1,24 @@
 import java.util.Scanner;
-
-public class fiturKritikSaran {
+public class Kritiksaran {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-         String sentencesList[] = new String[10];
 
-        System.out.println("Selamat datang di halaman kritik saran");
+        System.out.println("Masukkan nama Anda: ");
+        String nama = scanner.nextLine();
 
-        while (true) {
-            System.out.println("\nSilahkan ketik kalimat (type 'exit' to quit):");
-            String sentence = scanner.nextLine();
+        System.out.println("Masukkan fitur yang ingin Anda kritikkan: ");
+        String kritik = scanner.nextLine();
 
-            if (sentence.equalsIgnoreCase("exit")) {
-                break;
-            }
+        System.out.println("Masukkan saran fitur yang ingin Anda usulkan: ");
+        String saran = scanner.nextLine();
 
-            if (sentence == null) {
-                System.out.println("Tolong masukan kalimat yang valid.");
-                continue;
-            }
+        System.out.println("\nTerima kasih atas feedback Anda!");
+        System.out.println("Nama: " + nama);
+        System.out.println("Kritik: " + kritik);
+        System.out.println("Saran: " + saran);
 
-            for (int i = 0; i < sentencesList.length; i++) {
-                
-                 sentencesList[i] = sentence;
-
-                System.out.println("Kalimat disimpan!");
-            }
-
-            // Menampilkan kalimat yang sudah diinput
-            System.out.println("\nList kritik dan saran:");
-            for (String savedSentence : sentencesList) {
-                System.out.println("- " + savedSentence);
-            }
-        }
-
-        System.out.println("\nTerimakasih!");
         scanner.close();
-    }
+    }
 }
+
+          
