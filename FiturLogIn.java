@@ -128,7 +128,15 @@ public class FiturLogIn {
         System.out.println("Terima kasih atas pesanannya!");
                 break;
             case 4:
-                
+                System.out.println("\nInfo Contact Person:");
+
+        String nama = "Hotel Ijen Suites";
+        String telepon = "08123456789";
+        String email = "Ijensuites@gmail.com";
+
+        System.out.println("Nama: " + nama);
+        System.out.println("Nomor Telepon: " + telepon);
+        System.out.println("Alamat Email: " + email);
                 break;
             case 5:
                 String alamatHotel;
