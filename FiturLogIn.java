@@ -131,7 +131,21 @@ public class FiturLogIn {
 
                 break;
             case 6:
-                
+                 System.out.println("Masukkan nama Anda: ");
+        String nama = scanner.nextLine();
+
+        System.out.println("Masukkan fitur yang ingin Anda kritikkan: ");
+        String kritik = scanner.nextLine();
+
+        System.out.println("Masukkan saran fitur yang ingin Anda usulkan: ");
+        String saran = scanner.nextLine();
+
+        System.out.println("\nTerima kasih atas feedback Anda!");
+        System.out.println("Nama: " + nama);
+        System.out.println("Kritik: " + kritik);
+        System.out.println("Saran: " + saran);
+    }
+}
                 break;
             case 7:
                 
