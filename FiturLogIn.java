@@ -186,7 +186,53 @@ public class FiturLogIn {
 }
                 break;
             case 7:
-                
+                System.out.println("========================");
+                    System.out.println("Pilih Jenis Kamar: ");
+                    System.out.println("========================");
+                    System.out.println("1. Superior Deluxe Room");
+                    
+                    System.out.println("Fasilitas : ");
+                    System.out.println("^ Single Bed Regular Size");
+                    System.out.println("^ Balcony");
+                    System.out.println("^ Pool View");
+                    System.out.println("^ Soundproofing");
+                    System.out.println("^ Free Wifi");
+                    System.out.println("^ Flat-screen TV");
+                    System.out.println("^ Private Bathroom");
+                    System.out.println("^ Air Conditioning");
+                    System.out.println("========================");
+                    System.out.println("2. Devaxa President Room");
+                    System.out.println("Fasilitas : ");
+                    System.out.println("^ Living Room");
+                    System.out.println("^ Single Bed King Size");
+                    System.out.println("^ Balcony");
+                    System.out.println("^ Pool View");
+                    System.out.println("^ Soundproofing");
+                    System.out.println("^ Free Wifi");
+                    System.out.println("^ Flat-screen TV");
+                    System.out.println("^ Private Bathroom");
+                    System.out.println("^ Air Conditioning");
+                    System.out.println("========================");
+                    System.out.println("3. Raden Salah Suite");
+                    System.out.println("\nRaden Salah Suite");
+                    System.out.println("^ Private Suite      ^ 53m²          ^ Air conditioning   ^ Free Wifi\r\n" + //
+                            "^ Private bathroom   ^ Flat-screen   ^ Minibar            \r\n" + //
+                            "\r\n" + //
+                            "Room size : 53 m²\r\n" + //
+                            "\r\n" + //
+                            "1 extra-large double bed\r\n" + //
+                            "comfy beds, 9.5 - Based on 111 reviews\r\n" + //
+                            "\r\n" + //
+                            "Featuring antique Javanese furniture, this suite has a separate \r\n" + //
+                            "living room, an air-conditioned bedroom and en suite bathrooom\r\n" + //
+                            "with a bath\r\n" + //
+                            "\r\n" + //
+                            "Private bathroom :\r\n" + //
+                            "^ Free toiletries   ^ Bath or shower\r\n" + //
+                            "^ Bathrobe          ^ Slippers\r\n" + //
+                            "^ Bidget            ^ Hair dryer\r\n" + //
+                            "^ Toilet            ^ Toilet paper\r\n" + //
+                            "");
                 break;
             default:
                 System.out.println("Pilihan tidak valid");
