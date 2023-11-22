@@ -6,9 +6,8 @@ public class testFinalCode {
         Scanner input = new Scanner(System.in);
         Scanner scanner = new Scanner(System.in);
         int pilihMenu;
-        int[] superiorRoomsAvailable = new int[10];
-        int[] presidentRoomsAvailable = new int[10];
-        String[] tipeKamar = { "Superior", "Deluxe", "President Suite" };
+       
+        String[] tipeKamar = { "Superior Deluxe Room", "Devaxa President Room", "Raden Salah Suite" };
         double[] hargaPerMalam = { 750000, 500000, 2000000 };
         String[] layananTambahan = { "Extra Bed", "Makanan", null };
         double[] hargaLayanan = { 50000, 100000, 0 };
@@ -30,7 +29,15 @@ public class testFinalCode {
         String next;
         boolean gasss;
         String keMenu;
-        int jumlahDewasa, jumlahAnak, jumlahKamar;
+        int jumlahDewasa, jumlahAnak, jumlahKamarDiPesan=0;
+
+        boolean bayar;
+
+              // Jumlah total kamar hotel
+        int jumlahKamar[] = {11,15,12};
+
+        // Jumlah kamar yang sudah dipesan
+        int kamarDipesan[] = new int[3];
         do {
             gasss = false;
             System.out.println("\n=======================================");
@@ -52,8 +59,8 @@ public class testFinalCode {
 
             switch (pilihMenu) {
                 case 1:
-                do {
-                        //awal penambahan kode case 
+                    do {
+                        // awal penambahan kode case
                         System.out.println("\nCek Ketersediaan Kamar");
                         System.out.println("========================");
                         System.out.println("Pilih Jenis Kamar: ");
@@ -116,39 +123,44 @@ public class testFinalCode {
                         System.out.println("=======================================");
                         System.out.println("Masukkan jenis kamar yang ingin Anda cek :");
 
-                        String jenisKamar = sc.next();
+                        int jenisKamar = sc.nextInt();
+   // Meminta pengguna memasukkan jenis kamar yang ingin dicek
+                    
+kamarDipesan[jenisKamar-1]= jumlahKamarDiPesan;
+        // Menghitung jumlah kamar yang tersedia
 
-                        if (jenisKamar.equals("1") && hasAvailableRoom(superiorRoomsAvailable)) {
-                            System.out.println("Superior Deluxe Room tersedia. Anda bisa memesannya!");
-                            bookRoom(superiorRoomsAvailable);
-                        } else if (jenisKamar.equals("2") && hasAvailableRoom(presidentRoomsAvailable)) {
-                            System.out.println("Devaxa President Room tersedia. Anda bisa memesannya!");
-                            bookRoom(presidentRoomsAvailable);
-                        } else {
-                            System.out.println(
-                                    "Maaf, kamar yang Anda pilih tidak tersedia. Silahkan pilih kamar yang lain.");
-                        }
+        int kamarTersedia = jumlahKamar[jenisKamar-1] - kamarDipesan[jenisKamar-1];
+        
 
-                        displayRemainingRooms(superiorRoomsAvailable, "Superior Deluxe");
-                        displayRemainingRooms(presidentRoomsAvailable, "Devaxa President");
+
+     
+      
+
+
+        // Mengecek ketersediaan kamar
+        if (kamarTersedia > 0) {
+            System.out.println("Tersedia " + kamarTersedia + " kamar " + tipeKamar[jenisKamar-1] + ".");
+        } else {
+            System.out.println("Maaf, kamar " + tipeKamar[jenisKamar-1] + " tidak tersedia.");
+        }
                         sc.nextLine();
                         System.out.println("Apakah anda ingin tetap melanjutkan mengecek ketersediaan kamar ? (Y/N): ");
                         next = sc.nextLine();
                         if (next != "y" | next != "Y") {
                             gasss = true;
                         }
-                    
+
                     } while (next.equalsIgnoreCase("Y"));
                     System.out.println("\nApakah anda ingin kembali ke menu ? (Y/N): ");
                     keMenu = input.nextLine();
                     if (keMenu.equalsIgnoreCase("Y")) {
                         gasss = true;
                     }
-                    //batas penambahan kode case 
+                    // batas penambahan kode case
                     break;
 
                 case 2:
-                //awal penambahan kode case 
+                    // awal penambahan kode case
                     System.out.print("\nMasukkan nama pemesan: ");
                     namaPemesan = input.nextLine();
                     // Memilih tipe kamar
@@ -169,7 +181,7 @@ public class testFinalCode {
                         }
                     }
                     System.out.println("Masukkan jumlah kamar yang Anda pesan : ");
-                    jumlahKamar = sc.nextInt();
+                    jumlahKamarDiPesan = sc.nextInt();
                     System.out.println("Masukkan jumlah orang dewasa : ");
                     jumlahDewasa = sc.nextInt();
                     System.out.println("Masukkan jumlah anak kecil (dibawah 12 tahun): ");
@@ -204,6 +216,11 @@ public class testFinalCode {
 
                     }
 
+                    // Proses perhitungan total biaya
+                    totalBiaya = jumlahKamarDiPesan* jumlahMalam * selectedRoomPrice + totalLayanan;
+
+                    System.out.println("Total Biaya: Rp" + totalBiaya);
+
                     // input jumlah malam, allat transaksi, nominal pembayaran
 
                     System.out.print("Masukkan alat transaksi (cc/cash/dll.): ");
@@ -214,12 +231,21 @@ public class testFinalCode {
                     }
 
                     input.nextLine();
-                    System.out.print("Masukkan nominal pembayaran: ");
-                    pembayaran = input.nextDouble();
+                    do {
+                        bayar = false;
+                        System.out.print("Masukkan nominal pembayaran: ");
+                        pembayaran = input.nextDouble();
 
-                    // Proses perhitungan total biaya
-                    totalBiaya = jumlahMalam * selectedRoomPrice + totalLayanan;
-
+                        // Proses pembayaran
+                        if (pembayaran >= totalBiaya) {
+                            kembalian = pembayaran - totalBiaya;
+                            System.out.println("Pembayaran diterima. Kembalian: Rp" + kembalian);
+                            System.out.println("Terima kasih telah melakukan booking!");
+                        } else {
+                            System.out.println("Pembayaran tidak mencukupi. Silakan bayar sesuai total biaya.");
+                            bayar = true;
+                        }
+                    } while (bayar);
                     input.nextLine();
 
                     System.out.println("\nApakah anda ingin kembali ke menu ? (Y/N): ");
@@ -227,11 +253,11 @@ public class testFinalCode {
                     if (keMenu.equalsIgnoreCase("Y")) {
                         gasss = true;
                     }
-//batas penambahan kode case 
+                    // batas penambahan kode case
                     break;
 
                 case 3:
-                //awal penambahan kode case 
+                    // awal penambahan kode case
                     boolean pesanLagi = false;
                     String pesanan = "";
 
@@ -268,11 +294,11 @@ public class testFinalCode {
                     if (keMenu.equalsIgnoreCase("Y")) {
                         gasss = true;
                     }
-//batas penambahan kode case 
+                    // batas penambahan kode case
                     break;
 
                 case 4:
-                //awal penambahan kode case 
+                    // awal penambahan kode case
                     System.out.println("\nInfo Contact Person:");
 
                     String nama = "Hotel Ijen Suites";
@@ -287,11 +313,11 @@ public class testFinalCode {
                     if (keMenu.equalsIgnoreCase("Y")) {
                         gasss = true;
                     }
-                    //batas penambahan kode case 
+                    // batas penambahan kode case
                     break;
 
                 case 5:
-                //awal penambahan kode case 
+                    // awal penambahan kode case
                     String alamatHotel;
                     int cekLokasiHotel;
 
@@ -318,10 +344,10 @@ public class testFinalCode {
                     if (keMenu.equalsIgnoreCase("Y")) {
                         gasss = true;
                     }
-                    //batas penambahan kode case 
+                    // batas penambahan kode case
                     break;
                 case 6:
-                //awal penambahan kode case 
+                    // awal penambahan kode case
                     System.out.println("\nMasukkan nama Anda: ");
                     String namaPenulis = scanner.nextLine();
 
@@ -400,37 +426,7 @@ public class testFinalCode {
         } while (gasss);
     }
 
-    private static void checkHotelLocation(double latitude, double longitude) {
-        System.out.println("Lokasi Hotel:");
-        System.out.println("Latitude: " + latitude);
-        System.out.println("Longitude: " + longitude);
-    }
+    
 
-    private static boolean hasAvailableRoom(int[] roomsAvailable) {
-        for (int room : roomsAvailable) {
-            if (room == 0) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    private static void bookRoom(int[] roomsAvailable) {
-        for (int i = 0; i < roomsAvailable.length; i++) {
-            if (roomsAvailable[i] == 0) {
-                roomsAvailable[i] = 1;
-                break;
-            }
-        }
-    }
-
-    private static void displayRemainingRooms(int[] roomsAvailable, String roomType) {
-        int remainingRooms = 0;
-        for (int room : roomsAvailable) {
-            if (room == 0) {
-                remainingRooms++;
-            }
-        }
-        System.out.println("Remaining " + roomType + " Rooms: " + remainingRooms);
-    }
+   
 }
