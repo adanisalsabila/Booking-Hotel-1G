@@ -6,7 +6,7 @@ public class testFinalCode {
         Scanner input = new Scanner(System.in);
         Scanner scanner = new Scanner(System.in);
         int pilihMenu;
-       
+
         String[] tipeKamar = { "Superior Deluxe Room", "Devaxa President Room", "Raden Salah Suite" };
         double[] hargaPerMalam = { 750000, 500000, 2000000 };
         String[] layananTambahan = { "Extra Bed", "Makanan", null };
@@ -29,12 +29,12 @@ public class testFinalCode {
         String next;
         boolean gasss;
         String keMenu;
-        int jumlahDewasa, jumlahAnak, jumlahKamarDiPesan=0;
+        int jumlahDewasa, jumlahAnak, jumlahKamarDiPesan = 0;
 
         boolean bayar;
 
-              // Jumlah total kamar hotel
-        int jumlahKamar[] = {11,15,12};
+        // Jumlah total kamar hotel
+        int jumlahKamar[] = { 11, 15, 12 };
 
         // Jumlah kamar yang sudah dipesan
         int kamarDipesan[] = new int[3];
@@ -53,7 +53,7 @@ public class testFinalCode {
             System.out.println("7. Fasilitas Hotel");
             System.out.println("8. Cetak Struk");
             System.out.println("=======================================");
-            System.out.println("Pilih Menu 1/2/3/4/5 : ");
+            System.out.println("Pilih Menu 1/2/3/4/5/6/7/8 : ");
 
             pilihMenu = sc.nextInt();
 
@@ -124,25 +124,20 @@ public class testFinalCode {
                         System.out.println("Masukkan jenis kamar yang ingin Anda cek :");
 
                         int jenisKamar = sc.nextInt();
-   // Meminta pengguna memasukkan jenis kamar yang ingin dicek
-                    
-kamarDipesan[jenisKamar-1]= jumlahKamarDiPesan;
-        // Menghitung jumlah kamar yang tersedia
+                        // Meminta pengguna memasukkan jenis kamar yang ingin dicek
 
-        int kamarTersedia = jumlahKamar[jenisKamar-1] - kamarDipesan[jenisKamar-1];
-        
+                        kamarDipesan[jenisKamar - 1] = jumlahKamarDiPesan;
+                        // Menghitung jumlah kamar yang tersedia
 
+                        int kamarTersedia = jumlahKamar[jenisKamar - 1] - kamarDipesan[jenisKamar - 1];
 
-     
-      
-
-
-        // Mengecek ketersediaan kamar
-        if (kamarTersedia > 0) {
-            System.out.println("Tersedia " + kamarTersedia + " kamar " + tipeKamar[jenisKamar-1] + ".");
-        } else {
-            System.out.println("Maaf, kamar " + tipeKamar[jenisKamar-1] + " tidak tersedia.");
-        }
+                        // Mengecek ketersediaan kamar
+                        if (kamarTersedia > 0) {
+                            System.out
+                                    .println("Tersedia " + kamarTersedia + " kamar " + tipeKamar[jenisKamar - 1] + ".");
+                        } else {
+                            System.out.println("Maaf, kamar " + tipeKamar[jenisKamar - 1] + " tidak tersedia.");
+                        }
                         sc.nextLine();
                         System.out.println("Apakah anda ingin tetap melanjutkan mengecek ketersediaan kamar ? (Y/N): ");
                         next = sc.nextLine();
@@ -217,20 +212,20 @@ kamarDipesan[jenisKamar-1]= jumlahKamarDiPesan;
                     }
 
                     // Proses perhitungan total biaya
-                    totalBiaya = jumlahKamarDiPesan* jumlahMalam * selectedRoomPrice + totalLayanan;
+                    totalBiaya = jumlahKamarDiPesan * jumlahMalam * selectedRoomPrice + totalLayanan;
 
                     System.out.println("Total Biaya: Rp" + totalBiaya);
 
                     // input jumlah malam, allat transaksi, nominal pembayaran
 
-                    System.out.print("Masukkan alat transaksi (cc/cash/dll.): ");
+                    System.out.print("Masukkan alat transaksi (cc/cash): ");
                     alatTransaksi = input.nextLine();
                     if (alatTransaksi.equalsIgnoreCase("cc")) {
                         System.out.print("Masukkan no rekening anda: ");
                         noRekening = input.nextInt();
+                        input.nextLine();
                     }
 
-                    input.nextLine();
                     do {
                         bayar = false;
                         System.out.print("Masukkan nominal pembayaran: ");
@@ -321,7 +316,7 @@ kamarDipesan[jenisKamar-1]= jumlahKamarDiPesan;
                     String alamatHotel;
                     int cekLokasiHotel;
 
-                    System.out.println("\nSelamat datang di Hotel XYZ!");
+                    System.out.println("\nSelamat datang di Ijen Suites Hotel!");
                     System.out.println("Silakan pilih opsi:");
                     System.out.println("1. Cek Lokasi Hotel");
 
@@ -379,7 +374,11 @@ kamarDipesan[jenisKamar-1]= jumlahKamarDiPesan;
                         System.out.println(
                                 "===============================================================================");
                         // Output detail booking
-                        gasss = true;
+                        System.out.println("\nApakah anda ingin kembali ke menu ? (Y/N): ");
+                        keMenu = input.nextLine();
+                        if (keMenu.equalsIgnoreCase("Y")) {
+                            gasss = true;
+                        }
                     }
                     while (namaPemesan != null && selectedRoomType != null) {
                         System.out.println("\nDetail Booking:");
@@ -426,7 +425,4 @@ kamarDipesan[jenisKamar-1]= jumlahKamarDiPesan;
         } while (gasss);
     }
 
-    
-
-   
 }
