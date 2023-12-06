@@ -1,220 +1,208 @@
 import java.util.Scanner;
 
 public class testFinalCode {
+    static String keMenu, next, userAdmin, passAdmin;;
+    static boolean gasss, sedia, bayar, admin, adminMenu, inputLagi, lanjut2, lanjut;
+    static Scanner input = new Scanner(System.in);
+    static int pilihMenu, pilihanKamar, jenisKamar, jumlahDewasa, jumlahAnak;
+    static double kembalian;
+
     public static void main(String[] args) {
 
-        Scanner input = new Scanner(System.in);
+        // int
 
-        int pilihMenu;
+        int noRekening = 0;
+        int pilihanLayanan[] = { 0, 0 };
+        int jumlahMalam = 0;
+        // cek ketersediaan
+
+        int jumlahKamarDiPesan = 0;
+        int jumlahKamar[] = { 11, 15, 12 };
+        int kamarDipesan[] = new int[3];
 
         String[] tipeKamar = { "Superior Deluxe Room", "Devaxa President Room", "Raden Salah Suite" };
         double[] hargaPerMalam = { 750000, 500000, 2000000 };
         String[] layananTambahan = { "Extra Bed", "Makanan", null };
         double[] hargaLayanan = { 50000, 100000, 0 };
-        int pilihanKamar;
+
         String selectedRoomType = null;
         double selectedRoomPrice = 0;
-        boolean lanjut = true;
-        boolean lanjut2 = true;
-        int noRekening = 0;
-        int pilihanLayanan[] = { 0, 0 };
+
         String namaPemesan = null;
         String alatTransaksi = null;
         double pembayaran = 0.0;
         double totalLayanan = 0.0;
         double totalBiaya = 0.0;
-        double kembalian;
-        int jumlahMalam = 0;
-        //cek ketersediaan
-   boolean sedia;
-   int jenisKamar;
-//Kritik saran
-String namaPenulis=null, kritik=null, saran=null;
-//contact person
-  String nama = "Hotel Ijen Suites";
-                    String telepon = "08123456789";
-                    String email = "Ijensuites@gmail.com";
 
-        String next;
-        boolean gasss;
-        String keMenu;
-        int jumlahDewasa, jumlahAnak, jumlahKamarDiPesan = 0;
+        // Kritik saran
+        String namaPenulis = null, kritik = null, saran = null;
+        // contact person
+        String nama = "Hotel Ijen Suites";
+        String telepon = "08123456789";
+        String email = "Ijensuites@gmail.com";
 
-        boolean bayar;
-
-        // Jumlah total kamar hotel
-        int jumlahKamar[] = { 11, 15, 12 };
-
-        // Jumlah kamar yang sudah dipesan
-        int kamarDipesan[] = new int[3];
-
-        // user pass
-        String userAdmin, passAdmin;
-        boolean admin, adminMenu, inKamar, inCP;
         do {
             gasss = false;
             System.out.println("\n=======================================");
             System.out.println("Selamat Datang di Ijen Suites Hotel!");
             System.out.println("=======================================");
             System.out.println("Silahkan Pilih Menu");
-            System.out.println("0. Rincian Kamar");
-            System.out.println("1. Cek Ketersediaan Kamar");
-            System.out.println("2. Pesan Kamar");
-            System.out.println("3. Pesan Layanan Tambahan (Makanan/Extra Bed/Sewa Aula)");
-            System.out.println("4. Contact Person");
-            System.out.println("5. Lokasi Hotel");
-            System.out.println("6. Kritik dan Saran");
-            System.out.println("7. Fasilitas Hotel");
-            System.out.println("8. Cetak Struk");
-            System.out.println("9. Login Admin");
+            System.out.println("1. Rincian Kamar");
+            System.out.println("2. Cek Ketersediaan Kamar"); // login
+            System.out.println("3. Pesan Kamar");
+            System.out.println("4. Pesan Layanan Tambahan (Makanan/Extra Bed/Sewa Aula)");
+            System.out.println("5. Contact Person");
+            System.out.println("6. Lokasi Hotel");
+            System.out.println("7. Kritik dan Saran");
+            System.out.println("8. Fasilitas Hotel");
+            System.out.println("9. Cetak Struk");
+            System.out.println("10. Login Admin");
             System.out.println("=======================================");
-            System.out.print("     Pilih Menu 1/2/3/4/5/6/7/8/9 : ");
+            System.out.print("     Pilih Menu 1/2/3/4/5/6/7/8/9/10 : ");
             pilihMenu = input.nextInt();
             System.out.println("=======================================");
             input.nextLine();
             switch (pilihMenu) {
-                case 0:
-                String kamar []= {"    ===============================\r\n" + //
-"    ==  1. Superior Deluxe Room  ==\r\n" + //
-"    ===============================\r\n" + //
-"    = Fasilitas :                 =\r\n" + //
-"    =  ^ Single Bed Regular Size  =\r\n" + //
-"    =  ^ Balcony                  =\r\n" + //
-"    =  ^ Pool View                =\r\n" + //
-"    =  ^ Soundproofing            =\r\n" + //
-"    =  ^ Free Wifi                =\r\n" + //
-"    =  ^ Flat-screen TV           =\r\n" + //
-"    =  ^ Private Bathroom         =\r\n" + //
-"    =  ^ Air Conditioning         =\r\n" + //
-"    ===============================",
-"    ================================\r\n" + //
-        "    ==  2. Devaxa President Room  ==\r\n" + //
-        "    ================================\r\n" + //
-        "    = Fasilitas :                  =\r\n" + //
-        "    =  ^ Living Room               =\r\n" + //
-        "    =  ^ Single Bed King Size      =\r\n" + //
-        "    =  ^ Balcony\t\t   =\r\n" + //
-        "    =  ^ Pool View\t\t   =\r\n" + //
-        "    =  ^ Soundproofing\t\t   =\t\r\n" + //
-        "    =  ^ Free Wifi\t\t   =\r\n" + //
-        "    =  ^ Flat-screen TV\t\t   =\r\n" + //
-        "    =  ^ Private Bathroom \t   =\r\n" + //
-        "    =  ^ Air Conditioning\t   =\r\n" + //
-        "    ================================",
-    "\r\n" + //
-            "    ================================\r\n" + //
-            "    ==  3. Raden Salah Suite      ==\r\n" + //
-            "    ================================\r\n" + //
-            "    = Fasilitas :                  =\r\n" + //
-            "    =  ^ Living Room               =\r\n" + //
-            "    =  ^ Private Suite    \t   =\r\n" + //
-            "    =  ^ Private bathroom  \t   =\r\n" + //
-            "    =  ^ Minibar \t\t   =\r\n" + //
-            "    =  ^ Living Room\t\t   =\r\n" + //
-            "    =  ^ extra-large double bed\t   =\r\n" + //
-            "    =  ^ Balcony\t\t   =\r\n" + //
-            "    =  ^ Pool View\t\t   =\r\n" + //
-            "    =  ^ Soundproofing\t\t   =\r\n" + //
-            "    =  ^ Free Wifi\t       \t   =\r\n" + //
-            "    =  ^ Flat-screen TV \t   =\r\n" + //
-            "    =  ^ Private Bathroom \t   =\r\n" + //
-            "    =  ^ Air Conditioning\t   =\r\n" + //
-            "    ================================"};
+                case 1:
+                    String kamar[] = { "    ===============================\r\n" + //
+                            "    ==  1. Superior Deluxe Room  ==\r\n" + //
+                            "    ===============================\r\n" + //
+                            "    = Fasilitas :                 =\r\n" + //
+                            "    =  ^ Single Bed Regular Size  =\r\n" + //
+                            "    =  ^ Balcony                  =\r\n" + //
+                            "    =  ^ Pool View                =\r\n" + //
+                            "    =  ^ Soundproofing            =\r\n" + //
+                            "    =  ^ Free Wifi                =\r\n" + //
+                            "    =  ^ Flat-screen TV           =\r\n" + //
+                            "    =  ^ Private Bathroom         =\r\n" + //
+                            "    =  ^ Air Conditioning         =\r\n" + //
+                            "    ===============================",
+                            "    ================================\r\n" + //
+                                    "    ==  2. Devaxa President Room  ==\r\n" + //
+                                    "    ================================\r\n" + //
+                                    "    = Fasilitas :                  =\r\n" + //
+                                    "    =  ^ Living Room               =\r\n" + //
+                                    "    =  ^ Single Bed King Size      =\r\n" + //
+                                    "    =  ^ Balcony\t\t   =\r\n" + //
+                                    "    =  ^ Pool View\t\t   =\r\n" + //
+                                    "    =  ^ Soundproofing\t\t   =\t\r\n" + //
+                                    "    =  ^ Free Wifi\t\t   =\r\n" + //
+                                    "    =  ^ Flat-screen TV\t\t   =\r\n" + //
+                                    "    =  ^ Private Bathroom \t   =\r\n" + //
+                                    "    =  ^ Air Conditioning\t   =\r\n" + //
+                                    "    ================================",
+                            "\r\n" + //
+                                    "    ================================\r\n" + //
+                                    "    ==  3. Raden Salah Suite      ==\r\n" + //
+                                    "    ================================\r\n" + //
+                                    "    = Fasilitas :                  =\r\n" + //
+                                    "    =  ^ Living Room               =\r\n" + //
+                                    "    =  ^ Private Suite    \t   =\r\n" + //
+                                    "    =  ^ Private bathroom  \t   =\r\n" + //
+                                    "    =  ^ Minibar \t\t   =\r\n" + //
+                                    "    =  ^ Living Room\t\t   =\r\n" + //
+                                    "    =  ^ extra-large double bed\t   =\r\n" + //
+                                    "    =  ^ Balcony\t\t   =\r\n" + //
+                                    "    =  ^ Pool View\t\t   =\r\n" + //
+                                    "    =  ^ Soundproofing\t\t   =\r\n" + //
+                                    "    =  ^ Free Wifi\t       \t   =\r\n" + //
+                                    "    =  ^ Flat-screen TV \t   =\r\n" + //
+                                    "    =  ^ Private Bathroom \t   =\r\n" + //
+                                    "    =  ^ Air Conditioning\t   =\r\n" + //
+                                    "    ================================" };
 
+                    System.out.println("===============================");
+                    System.out.println("==  1. Superior Deluxe Room  ==");
+                    System.out.println("===============================");
+                    System.out.println("= Fasilitas :                 =");
+                    System.out.println("=  ^ Single Bed Regular Size  =");
+                    System.out.println("=  ^ Balcony                  =");
+                    System.out.println("=  ^ Pool View                =");
+                    System.out.println("=  ^ Soundproofing            =");
+                    System.out.println("=  ^ Free Wifi                =");
+                    System.out.println("=  ^ Flat-screen TV           =");
+                    System.out.println("=  ^ Private Bathroom         =");
+                    System.out.println("=  ^ Air Conditioning         =");
+                    System.out.println("===============================");
+                    System.out.println();
+                    System.out.println("\n==============================");
+                    System.out.println("==      :Rincian Kamar:     ==");
+                    System.out.println("==============================");
 
-        Scanner sc = new Scanner(System.in);
-        System.out.println("===============================");
-        System.out.println("==  1. Superior Deluxe Room  ==");
-        System.out.println("===============================");
-        System.out.println("= Fasilitas :                 =");
-        System.out.println("=  ^ Single Bed Regular Size  =");
-        System.out.println("=  ^ Balcony                  =");
-        System.out.println("=  ^ Pool View                =");
-        System.out.println("=  ^ Soundproofing            =");
-        System.out.println("=  ^ Free Wifi                =");
-        System.out.println("=  ^ Flat-screen TV           =");
-        System.out.println("=  ^ Private Bathroom         =");
-        System.out.println("=  ^ Air Conditioning         =");
-        System.out.println("===============================");
-        System.out.println();
-        System.out.println("\n==============================");
-        System.out.println("==      :Rincian Kamar:     ==");
-        System.out.println("==============================");
-                    
-                        System.out.println("\n=====:Pilih Jenis Kamar:=====");
-                        System.out.println();
-                        System.out.println("==============================");
-                        System.out.println("== 1. Superior Deluxe Room  ==");
-                       System.out.println("==============================");
-                        System.out.println("== 2. Devaxa President Room ==");
-                       System.out.println("==============================");
-                        System.out.println("== 3. Raden Salah Suite     ==");                     
-                        System.out.println("==============================");
-                        System.out.println();
-                        do{
-    sedia = false;    do{
-            sedia=false;
-                        System.out.println("==========================================");
-                        System.out.println("Masukkan jenis kamar yang ingin Anda lihat :");
-System.out.println("==========================================");
-System.out.print("+==> ");
-                        jenisKamar = input.nextInt();
-                        // Meminta pengguna memasukkan jenis kamar yang ingin dicek
-if (jenisKamar > kamarDipesan.length){
-    System.out.println("Inputan melebihi jumlah jenis kamar");
-    sedia=true;
-} }while (sedia);
+                    System.out.println("\n=====:Pilih Jenis Kamar:=====");
+                    System.out.println();
+                    System.out.println("==============================");
+                    System.out.println("== 1. Superior Deluxe Room  ==");
+                    System.out.println("==============================");
+                    System.out.println("== 2. Devaxa President Room ==");
+                    System.out.println("==============================");
+                    System.out.println("== 3. Raden Salah Suite     ==");
+                    System.out.println("==============================");
+                    System.out.println();
+                    do {
+                        sedia = false;
+                        do {
+                            sedia = false;
+                            System.out.println("==========================================");
+                            System.out.println("Masukkan jenis kamar yang ingin Anda lihat :");
+                            System.out.println("==========================================");
+                            System.out.print("+==> ");
+                            jenisKamar = input.nextInt();
+                            // Meminta pengguna memasukkan jenis kamar yang ingin dicek
+                            if (jenisKamar > kamarDipesan.length) {
+                                System.out.println("Inputan melebihi jumlah jenis kamar");
+                                sedia = true;
+                            }
+                        } while (sedia);
                         if ((jenisKamar) <= kamar.length) {
-                             //menampilkan jenis kamar
-                        System.out.println(kamar[jenisKamar-1]);
+                            // menampilkan jenis kamar
+                            System.out.println(kamar[jenisKamar - 1]);
 
                         } else {
                             System.out.println();
                             System.out.println("== Data tidak ada, inputan salah. ==");
-                    System.out.println();}
-                       
-     
+                            System.out.println();
+                        }
+
                         input.nextLine();
                         System.out.println("Apakah anda ingin tetap melanjutkan mengecek ketersediaan kamar ? (Y/N): ");
                         next = input.nextLine();
                         if (next != "y" | next != "Y") {
-                            gasss=true;
+                            gasss = true;
                         }
-                    }while(next.equalsIgnoreCase("Y"));
-                break;
-                case 1:
-                  
-                       
-        
-        System.out.println("\n==============================");
-        System.out.println("== :Cek Ketersediaan Kamar: ==");
-        System.out.println("==============================");
-                    
-                        System.out.println("\n=====:Pilih Jenis Kamar:=====");
-                        System.out.println();
-                        System.out.println("==============================");
-                        System.out.println("== 1. Superior Deluxe Room  ==");
-                       System.out.println("==============================");
-                        System.out.println("== 2. Devaxa President Room ==");
-                       System.out.println("==============================");
-                        System.out.println("== 3. Raden Salah Suite     ==");                     
-                        System.out.println("==============================");
-                        System.out.println();
-                        do{
-                              sedia=false;
-                            do{
-            sedia=false;
-                        System.out.println("=========================================");
-                        System.out.println("Masukkan jenis kamar yang ingin Anda cek :");
-System.out.println("=========================================");
-                         jenisKamar = input.nextInt();
-                        // Meminta pengguna memasukkan jenis kamar yang ingin dicek
-if (jenisKamar > kamarDipesan.length){
-    System.out.println("Inputan melebihi jumlah jenis kamar");
-    sedia=true;
-} }while (sedia);
+                    } while (next.equalsIgnoreCase("Y"));
+                    break;
+                case 2:
 
-    
+                    System.out.println("\n==============================");
+                    System.out.println("== :Cek Ketersediaan Kamar: ==");
+                    System.out.println("==============================");
+
+                    System.out.println("\n=====:Pilih Jenis Kamar:=====");
+                    System.out.println();
+                    System.out.println("==============================");
+                    System.out.println("== 1. Superior Deluxe Room  ==");
+                    System.out.println("==============================");
+                    System.out.println("== 2. Devaxa President Room ==");
+                    System.out.println("==============================");
+                    System.out.println("== 3. Raden Salah Suite     ==");
+                    System.out.println("==============================");
+                    System.out.println();
+                    do {
+                        sedia = false;
+                        do {
+                            sedia = false;
+                            System.out.println("=========================================");
+                            System.out.println("Masukkan jenis kamar yang ingin Anda cek :");
+                            System.out.println("=========================================");
+                            jenisKamar = input.nextInt();
+                            // Meminta pengguna memasukkan jenis kamar yang ingin dicek
+                            if (jenisKamar > kamarDipesan.length) {
+                                System.out.println("Inputan melebihi jumlah jenis kamar");
+                                sedia = true;
+                            }
+                        } while (sedia);
+
                         kamarDipesan[jenisKamar - 1] = jumlahKamarDiPesan;
                         // Menghitung jumlah kamar yang tersedia
 
@@ -223,7 +211,8 @@ if (jenisKamar > kamarDipesan.length){
                         // Mengecek ketersediaan kamar
                         if (kamarTersedia > 0) {
                             System.out
-                                    .println("== Tersedia " + kamarTersedia + " kamar " + tipeKamar[jenisKamar - 1] + ". ==");
+                                    .println("== Tersedia " + kamarTersedia + " kamar " + tipeKamar[jenisKamar - 1]
+                                            + ". ==");
                         } else {
                             System.out.println("Maaf, kamar " + tipeKamar[jenisKamar - 1] + " tidak tersedia.");
                         }
@@ -231,14 +220,13 @@ if (jenisKamar > kamarDipesan.length){
                         System.out.println("Apakah anda ingin tetap melanjutkan mengecek ketersediaan kamar ? (Y/N): ");
                         next = input.nextLine();
                         if (next != "y" | next != "Y") {
-                            gasss=true;
+                            gasss = true;
                         }
-                    }while(next.equalsIgnoreCase("Y"));
-                   
-                    
+                    } while (next.equalsIgnoreCase("Y"));
+
                     break;
 
-                case 2:
+                case 3:
 
                     // awal penambahan kode case
                     System.out.println("\n=================================================");
@@ -248,7 +236,8 @@ if (jenisKamar > kamarDipesan.length){
                     namaPemesan = input.nextLine();
                     System.out.println("=================================================");
                     // Memilih tipe kamar
-                    while (lanjut) {
+                    do {
+                        lanjut = true;
                         System.out.println("= Pilih tipe kamar: ");
                         for (int i = 0; i < tipeKamar.length; i++) {
                             System.out.println("=  " + (i + 1) + ". " + tipeKamar[i] + " - $" + hargaPerMalam[i]);
@@ -265,7 +254,7 @@ if (jenisKamar > kamarDipesan.length){
                         } else {
                             System.out.println("Inputan salah");
                         }
-                    }
+                    } while (lanjut);
 
                     System.out.print("= Masukkan jumlah kamar yang Anda pesan : ");
                     jumlahKamarDiPesan = input.nextInt();
@@ -293,19 +282,22 @@ if (jenisKamar > kamarDipesan.length){
 
                     int i = 0;
                     System.out.println("=================================================");
-                    while (lanjut2 && i < layananTambahan.length - 1) {
-                        System.out.print("= Masukkan angka untuk memilih : ");
-                        pilihanLayanan[i] = input.nextInt();
-                        System.out.println("=================================================");
+                    if (i < layananTambahan.length - 1) {
+                        do {
+                            lanjut2 = true;
+                            System.out.print("= Masukkan angka untuk memilih : ");
+                            pilihanLayanan[i] = input.nextInt();
+                            System.out.println("=================================================");
 
-                        if (pilihanLayanan[i] == 3) {
-                            lanjut2 = false;
-                        }
-                        totalLayanan += hargaLayanan[pilihanLayanan[i] - 1];
+                            if (pilihanLayanan[i] == 3) {
+                                lanjut2 = false;
+                            }
+                            totalLayanan += hargaLayanan[pilihanLayanan[i] - 1];
 
-                        input.nextLine();
-                        i++;
+                            input.nextLine();
+                            i++;
 
+                        } while (lanjut2);
                     }
 
                     // Proses perhitungan total biaya
@@ -347,14 +339,12 @@ if (jenisKamar > kamarDipesan.length){
                     input.nextLine();
 
                     System.out.println("\nApakah anda ingin kembali ke menu ? (Y/N): ");
-                    keMenu = input.nextLine();
-                    if (keMenu.equalsIgnoreCase("Y")) {
-                        gasss = true;
-                    }
+                    keMenu = input.next();
+                    isKembaliKeMenu(keMenu);
                     // batas penambahan kode case
                     break;
 
-                case 3:
+                case 4:
                     // awal penambahan kode case
                     boolean pesanLagi, pesanMenu;
                     String pesanan = "";
@@ -404,31 +394,13 @@ if (jenisKamar > kamarDipesan.length){
                     // batas penambahan kode case
                     break;
 
-                case 4:
+                case 5:
 
                     // awal penambahan kode case
 
-                  
+                    contactPerson(nama, email, telepon);
 
-                    System.out.println("\n======================================");
-                    System.out.println("===        Contact Person:         ===");
-                    System.out.println("======================================");
-                    System.out.println("= Nama: " + nama + "            =");
-                    System.out.println("======================================");
-                    System.out.println("= Nomor Telepon: " + telepon + "         =");
-                    System.out.println("======================================");
-                    System.out.println("= Alamat Email: " + email + " =");
-                    System.out.println("======================================");
-
-                    System.out.println("\nApakah anda ingin kembali ke menu ? (Y/N): ");
-                    keMenu = input.nextLine();
-                    if (keMenu.equalsIgnoreCase("Y")) {
-                        gasss = true;
-                    }
-                    // batas penambahan kode case
-                    break;
-
-                case 5:
+                case 6:
                     // awal penambahan kode case
 
                     System.out.println("\n=================================");
@@ -456,20 +428,18 @@ if (jenisKamar > kamarDipesan.length){
                             System.out.println("Opsi tidak valid.");
                     }
                     System.out.println("\nApakah anda ingin kembali ke menu ? (Y/N): ");
-                    keMenu = input.nextLine();
-                    if (keMenu.equalsIgnoreCase("Y")) {
-                        gasss = true;
-                    }
+                    keMenu = input.next();
+                    isKembaliKeMenu(keMenu);
                     // batas penambahan kode case
                     break;
-                case 6:
+                case 7:
 
                     // awal penambahan kode case
                     System.out.println("\n========================================================================");
                     System.out.println("===                        Kritik Saran:                             ===");
                     System.out.println("========================================================================");
                     System.out.print("= Masukkan nama Anda: ");
-                     namaPenulis = input.nextLine();
+                    namaPenulis = input.nextLine();
                     System.out.println("========================================================================");
                     System.out.println("==          Masukkan kritik fitur yang ingin Anda tambahkan:          ==");
                     System.out.println("========================================================================");
@@ -494,29 +464,16 @@ if (jenisKamar > kamarDipesan.length){
                     System.out.println("========================================================================");
                     System.out.println("= +==>            " + saran);
                     System.out.println("\nApakah anda ingin kembali ke menu ? (Y/N): ");
-                    keMenu = input.nextLine();
-                    if (keMenu.equalsIgnoreCase("Y")) {
-                        gasss = true;
-                    }
+                    keMenu = input.next();
+                    isKembaliKeMenu(keMenu);
                     // batas penambahan kode case
                     break;
 
-                case 8:
+                case 9:
                     // awal penambahan kode case
+                    // CetakStruk();
 
-                    if (namaPemesan == null && selectedRoomType == null) {
-                        System.out.println(
-                                "\n===============================================================================");
-                        System.out.println("              Silahkan isi data pemesanan kamar terlebih dahulu");
-                        System.out.println(
-                                "===============================================================================");
-                        // Output detail booking
-                        System.out.println("\nApakah anda ingin kembali ke menu ? (Y/N): ");
-                        keMenu = input.nextLine();
-                        if (keMenu.equalsIgnoreCase("Y")) {
-                            gasss = true;
-                        }
-                    }
+                    InvalidCetakStruk(namaPemesan, selectedRoomType);
 
                     while (namaPemesan != null && selectedRoomType != null) {
                         System.out.println("\n======================================================");
@@ -560,14 +517,12 @@ if (jenisKamar > kamarDipesan.length){
                         System.out.println("\n   ==== Terima kasih telah melakukan booking! ====    ");
 
                         System.out.println("\nApakah anda ingin kembali ke menu ? (Y/N): ");
-                        keMenu = input.nextLine();
-                        if (keMenu.equalsIgnoreCase("Y")) {
-                            gasss = true;
-                        }
+                        keMenu = input.next();
+                        isKembaliKeMenu(keMenu);
                         // batas penambahan kode case
-                        break;
                     }
-                case 9:
+                    break;
+                case 10:
                     do {
                         System.out.println("\n===============================");
                         System.out.println("=        Login Admin:         =");
@@ -602,7 +557,7 @@ if (jenisKamar > kamarDipesan.length){
                                 switch (menuAdmin) {
                                     case 1:
                                         do {
-                                            inKamar = false;
+                                            inputLagi = false;
                                             for (int j = 0; j < kamarDipesan.length; j++) {
                                                 System.out.print("Input jumlah kamar " + (tipeKamar[j]) + " : ");
                                                 int inputJumlahKamar = input.nextInt();
@@ -616,14 +571,14 @@ if (jenisKamar > kamarDipesan.length){
                                             if (keMenu.equalsIgnoreCase("Y")) {
                                                 adminMenu = true;
                                             } else if (keMenu.equalsIgnoreCase("N")) {
-                                                inKamar = true;
+                                                inputLagi = true;
                                             }
-                                        } while (inKamar);
+                                        } while (inputLagi);
 
                                         break;
                                     case 2:
                                         do {
-                                            inCP = false;
+                                            inputLagi = false;
 
                                             System.out.print("Input Nama Hotel : ");
                                             nama = input.nextLine();
@@ -638,24 +593,31 @@ if (jenisKamar > kamarDipesan.length){
                                             if (keMenu.equalsIgnoreCase("Y")) {
                                                 adminMenu = true;
                                             } else if (keMenu.equalsIgnoreCase("N")) {
-                                                inKamar = true;
+                                                inputLagi = true;
                                             }
-                                        } while (inCP);
+                                        } while (inputLagi);
 
                                         break;
-                                        case 4:
+                                    case 4:
                                         for (int j = 0; j < kamarDipesan.length; j++) {
-                                            
-                                            System.out.println("\n========================================================================");
+
+                                            System.out.println(
+                                                    "\n========================================================================");
                                             System.out.println("Nama: " + namaPenulis);
-                                            System.out.println("========================================================================");
-                                            System.out.println("====                          Kritik:                               ====");
-                                            System.out.println("========================================================================");
+                                            System.out.println(
+                                                    "========================================================================");
+                                            System.out.println(
+                                                    "====                          Kritik:                               ====");
+                                            System.out.println(
+                                                    "========================================================================");
                                             System.out.println("= +==>            " + kritik);
-                                            
-                                            System.out.println("========================================================================");
-                                            System.out.println("====                          Saran:                                ====");
-                                            System.out.println("========================================================================");
+
+                                            System.out.println(
+                                                    "========================================================================");
+                                            System.out.println(
+                                                    "====                          Saran:                                ====");
+                                            System.out.println(
+                                                    "========================================================================");
                                             System.out.println("= +==>            " + saran);
                                         }
                                         break;
@@ -673,10 +635,9 @@ if (jenisKamar > kamarDipesan.length){
                             System.out.println("=        Login Gagal!        =");
                             System.out.println("===============================");
                             System.out.println("\nApakah anda ingin kembali ke menu (Y) / input kembali (N)? : ");
-                            keMenu = input.nextLine();
-                            if (keMenu.equalsIgnoreCase("Y")) {
-                                gasss = true;
-                            } else if (keMenu.equalsIgnoreCase("N")) {
+                            keMenu = input.next();
+                            isKembaliKeMenu(keMenu);
+                            if (keMenu.equalsIgnoreCase("N")) {
                                 admin = true;
                             }
                         }
@@ -688,4 +649,44 @@ if (jenisKamar > kamarDipesan.length){
         input.close();
     }
 
+    static boolean isKembaliKeMenu(String param) {
+        if (param.equalsIgnoreCase("Y")) {
+            gasss = true;
+        }
+        return gasss;
+
+    }
+
+    public static void InvalidCetakStruk(String param1, String param2) {
+        if (param1 == null && param2 == null) {
+            System.out.println(
+                    "\n===============================================================================");
+            System.out.println("              Silahkan isi data pemesanan kamar terlebih dahulu");
+            System.out.println(
+                    "===============================================================================");
+            // Output detail booking
+            System.out.println("\nApakah anda ingin kembali ke menu ? (Y/N): ");
+            keMenu = input.next();
+            isKembaliKeMenu(keMenu);
+        }
+
+    }
+
+    public static void contactPerson(String nama, String email, String telepon) {
+        System.out.println("\n======================================");
+        System.out.println("===        Contact Person:         ===");
+        System.out.println("======================================");
+        System.out.println("= Nama: " + nama + "            =");
+        System.out.println("======================================");
+        System.out.println("= Nomor Telepon: " + telepon + "         =");
+        System.out.println("======================================");
+        System.out.println("= Alamat Email: " + email + " =");
+        System.out.println("======================================");
+
+        System.out.println("\nApakah anda ingin kembali ke menu ? (Y/N): ");
+        keMenu = input.next();
+        isKembaliKeMenu(keMenu);
+        // batas penambahan kode case
+        break;
+    }
 }
