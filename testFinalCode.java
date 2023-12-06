@@ -1,3 +1,4 @@
+package CobaCoba;
 import java.util.Scanner;
 
 public class testFinalCode {
@@ -61,6 +62,7 @@ public class testFinalCode {
             System.out.print("     Pilih Menu 1/2/3/4/5/6/7/8/9/10 : ");
             pilihMenu = input.nextInt();
             System.out.println("=======================================");
+            input.nextLine();
             input.nextLine();
             switch (pilihMenu) {
                 case 1:
@@ -207,6 +209,7 @@ public class testFinalCode {
                         // Menghitung jumlah kamar yang tersedia
 
                         int kamarTersedia = jumlahKamar[jenisKamar - 1] - kamarDipesan[jenisKamar - 1];
+                        int kamarTersedia = jumlahKamar[jenisKamar - 1] - kamarDipesan[jenisKamar - 1];
 
                         // Mengecek ketersediaan kamar
                         if (kamarTersedia > 0) {
@@ -218,6 +221,7 @@ public class testFinalCode {
                         }
                         input.nextLine();
                         System.out.println("Apakah anda ingin tetap melanjutkan mengecek ketersediaan kamar ? (Y/N): ");
+                        next = input.nextLine();
                         next = input.nextLine();
                         if (next != "y" | next != "Y") {
                             gasss = true;
@@ -233,7 +237,12 @@ public class testFinalCode {
                     System.out.println("==                Pesan Kamar:                 ==");
                     System.out.println("=================================================");
                     System.out.print("= Masukkan nama pemesan: ");
+                    System.out.println("\n=================================================");
+                    System.out.println("==                Pesan Kamar:                 ==");
+                    System.out.println("=================================================");
+                    System.out.print("= Masukkan nama pemesan: ");
                     namaPemesan = input.nextLine();
+                    System.out.println("=================================================");
                     System.out.println("=================================================");
                     // Memilih tipe kamar
                     do {
@@ -241,10 +250,14 @@ public class testFinalCode {
                         System.out.println("= Pilih tipe kamar: ");
                         for (int i = 0; i < tipeKamar.length; i++) {
                             System.out.println("=  " + (i + 1) + ". " + tipeKamar[i] + " - $" + hargaPerMalam[i]);
+                            System.out.println("=  " + (i + 1) + ". " + tipeKamar[i] + " - $" + hargaPerMalam[i]);
                         }
                         System.out.println("=================================================");
                         System.out.print("= Masukkan angka untuk memilih : ");
+                        System.out.println("=================================================");
+                        System.out.print("= Masukkan angka untuk memilih : ");
                         pilihanKamar = input.nextInt();
+                        System.out.println("=================================================");
                         System.out.println("=================================================");
 
                         if (pilihanKamar <= tipeKamar.length && pilihanKamar > 0) {
@@ -272,10 +285,14 @@ public class testFinalCode {
                     // Memilih layanan tambahan
                     System.out.println("=================================================");
                     System.out.println("= Pilih layanan tambahan :");
+                    System.out.println("=================================================");
+                    System.out.println("= Pilih layanan tambahan :");
                     for (int i = 0; i < layananTambahan.length; i++) {
                         if (layananTambahan[i] != null)
                             System.out.println("=  " + (i + 1) + ". " + layananTambahan[i] + " - $" + hargaLayanan[i]);
+                            System.out.println("=  " + (i + 1) + ". " + layananTambahan[i] + " - $" + hargaLayanan[i]);
                     }
+                    System.out.println("=  3. skip");
                     System.out.println("=  3. skip");
 
                     input.nextLine(); // membersihkan buffer
@@ -302,22 +319,31 @@ public class testFinalCode {
 
                     // Proses perhitungan total biaya
                     totalBiaya = jumlahKamarDiPesan * jumlahMalam * selectedRoomPrice + totalLayanan;
+                    totalBiaya = jumlahKamarDiPesan * jumlahMalam * selectedRoomPrice + totalLayanan;
 
+                    System.out.println("==          Total Biaya: " + totalBiaya);
                     System.out.println("==          Total Biaya: " + totalBiaya);
 
                     // input jumlah malam, allat transaksi, nominal pembayaran
+                    System.out.println("=================================================");
+                    System.out.print("= Masukkan alat transaksi (cc/cash): ");
                     System.out.println("=================================================");
                     System.out.print("= Masukkan alat transaksi (cc/cash): ");
                     alatTransaksi = input.nextLine();
                     if (alatTransaksi.equalsIgnoreCase("cc")) {
                         System.out.println("=================================================");
                         System.out.print("= Masukkan no rekening anda: ");
+                        System.out.println("=================================================");
+                        System.out.print("= Masukkan no rekening anda: ");
                         noRekening = input.nextInt();
+                        input.nextLine();
                         input.nextLine();
                     }
 
                     do {
                         bayar = false;
+                        System.out.println("=================================================");
+                        System.out.print("= Masukkan nominal pembayaran: ");
                         System.out.println("=================================================");
                         System.out.print("= Masukkan nominal pembayaran: ");
                         pembayaran = input.nextDouble();
@@ -329,7 +355,14 @@ public class testFinalCode {
                             System.out.println("== Pembayaran diterima. Kembalian: Rp" + kembalian);
                             System.out.println("=================================================");
                             System.out.println("\n ==== Terima kasih telah melakukan booking! ==== ");
+                            System.out.println("=================================================");
+                            System.out.println("== Pembayaran diterima. Kembalian: Rp" + kembalian);
+                            System.out.println("=================================================");
+                            System.out.println("\n ==== Terima kasih telah melakukan booking! ==== ");
                         } else {
+                            System.out.println("=================================================");
+                            System.out.println("\nPembayaran tidak mencukupi. Silakan bayar sesuai total biaya.");
+                            System.out.println();
                             System.out.println("=================================================");
                             System.out.println("\nPembayaran tidak mencukupi. Silakan bayar sesuai total biaya.");
                             System.out.println();
@@ -346,6 +379,7 @@ public class testFinalCode {
 
                 case 4:
                     // awal penambahan kode case
+                    boolean pesanLagi, pesanMenu;
                     boolean pesanLagi, pesanMenu;
                     String pesanan = "";
 
@@ -364,7 +398,22 @@ public class testFinalCode {
                             System.out.println("\nPilih menu makanan yang ingin Anda pesan: ");
                             System.out.print("+==> ");
                             int pilihan = input.nextInt();
+                        pesanLagi = false;
 
+                        System.out.println("\n=========================================");
+                        System.out.println("===           Menu Makanan:           ===");
+                        System.out.println("=========================================");
+                        System.out.println("= 1. Chicken Cordon Bleu                =");
+                        System.out.println("=========================================");
+                        System.out.println("= 2. Mi Ayam                            =");
+                        System.out.println("=========================================");
+                        do {
+                            pesanMenu = false;
+                            System.out.println("\nPilih menu makanan yang ingin Anda pesan: ");
+                            System.out.print("+==> ");
+                            int pilihan = input.nextInt();
+
+                            switch (pilihan) {
                             switch (pilihan) {
 
                                 case 1:
@@ -383,7 +432,27 @@ public class testFinalCode {
                         System.out.println("=========================================");
                         System.out.println("\nApakah Anda ingin memesan lagi? (Y/N): ");
                         String jawaban = input.next();
+                                case 1:
+                                    pesanan = "Chicken Cordon Bleu";
+                                    break;
+                                case 2:
+                                    pesanan = "Mi Ayam";
+                                    break;
+                                default:
+                                    System.out.println("\n Menu tidak valid. Silakan pilih kembali.");
+                                    pesanMenu = true;
+                            }
+                        } while (pesanMenu);
+                        System.out.println("\n=========================================");
+                        System.out.println("==  Anda memesan:" + pesanan);
+                        System.out.println("=========================================");
+                        System.out.println("\nApakah Anda ingin memesan lagi? (Y/N): ");
+                        String jawaban = input.next();
 
+                        pesanLagi = jawaban.equalsIgnoreCase("Y");
+                        if (jawaban != "y" | jawaban != "Y") {
+                            gasss = true;
+                        }
                         pesanLagi = jawaban.equalsIgnoreCase("Y");
                         if (jawaban != "y" | jawaban != "Y") {
                             gasss = true;
@@ -419,9 +488,12 @@ public class testFinalCode {
                         case 1:
                             System.out.println(
                                     "=================================================================================");
+                                    "=================================================================================");
                             System.out.println(
                                     "= Jalan Ijen Nirwana Raya Blok A No.16, Malang Center, Malang, Indonesia, 65116 =");
+                                    "= Jalan Ijen Nirwana Raya Blok A No.16, Malang Center, Malang, Indonesia, 65116 =");
                             System.out.println(
+                                    "=================================================================================");
                                     "=================================================================================");
                             break;
                         default:
@@ -453,7 +525,18 @@ public class testFinalCode {
 
                     System.out.println("\n             ===== :Terima kasih atas feedback Anda!: =====             ");
                     System.out.println("\n========================================================================");
+                    System.out.println("\n             ===== :Terima kasih atas feedback Anda!: =====             ");
+                    System.out.println("\n========================================================================");
                     System.out.println("Nama: " + namaPenulis);
+                    System.out.println("========================================================================");
+                    System.out.println("====                          Kritik:                               ====");
+                    System.out.println("========================================================================");
+                    System.out.println("= +==>            " + kritik);
+
+                    System.out.println("========================================================================");
+                    System.out.println("====                          Saran:                                ====");
+                    System.out.println("========================================================================");
+                    System.out.println("= +==>            " + saran);
                     System.out.println("========================================================================");
                     System.out.println("====                          Kritik:                               ====");
                     System.out.println("========================================================================");
@@ -486,11 +569,23 @@ public class testFinalCode {
                         System.out.println("=    Harga Kamar : Rp" + selectedRoomPrice);
                         System.out.println("======================================================");
                         System.out.println("=    Layanan Tambahan:");
+                        System.out.println("\n======================================================");
+                        System.out.println("===                 Detail Booking:                ===");
+                        System.out.println("======================================================");
+                        System.out.println("=    Nama Pemesan:" + namaPemesan);
+                        System.out.println("======================================================");
+                        System.out.println("=    Tipe Kamar: " + selectedRoomType);
+                        System.out.println("======================================================");
+                        System.out.println("=    Harga Kamar : Rp" + selectedRoomPrice);
+                        System.out.println("======================================================");
+                        System.out.println("=    Layanan Tambahan:");
                         i = 0;
                         while (totalLayanan != 0 | i < layananTambahan.length) {
                             // int pilihanLayanan = input.nextInt();
+                            // int pilihanLayanan = input.nextInt();
                             for (i = 0; i < pilihanLayanan.length; i++) {
                                 if (totalLayanan != 0) {
+                                    System.out.println("=    - " + layananTambahan[pilihanLayanan[i] - 1] + " - $"
                                     System.out.println("=    - " + layananTambahan[pilihanLayanan[i] - 1] + " - $"
                                             + hargaLayanan[pilihanLayanan[i] - 1]);
                                 }
@@ -500,7 +595,12 @@ public class testFinalCode {
                         System.out.println("======================================================");
                         System.out.println("=    Alat Transaksi: " + alatTransaksi);
                         System.out.println("======================================================");
+                        System.out.println("======================================================");
+                        System.out.println("=    Alat Transaksi: " + alatTransaksi);
+                        System.out.println("======================================================");
                         if (alatTransaksi.equalsIgnoreCase("cc")) {
+                            System.out.println("=    No Rekening Anda : " + noRekening);
+                            System.out.println("======================================================");
                             System.out.println("=    No Rekening Anda : " + noRekening);
                             System.out.println("======================================================");
                         }
@@ -508,8 +608,18 @@ public class testFinalCode {
                         System.out.println("======================================================");
                         System.out.println("=    Total Biaya: Rp" + totalBiaya);
                         System.out.println("======================================================");
+                        System.out.println("=    Jumlah Malam Menginap: " + jumlahMalam);
+                        System.out.println("======================================================");
+                        System.out.println("=    Total Biaya: Rp" + totalBiaya);
+                        System.out.println("======================================================");
 
                         // Proses pembayaran
+
+                        kembalian = pembayaran - totalBiaya;
+                        System.out.println("=    Pembayaran diterima. Kembalian: Rp" + kembalian);
+                        System.out.println("======================================================");
+                        System.out.println("\n   ==== Terima kasih telah melakukan booking! ====    ");
+
 
                         kembalian = pembayaran - totalBiaya;
                         System.out.println("=    Pembayaran diterima. Kembalian: Rp" + kembalian);

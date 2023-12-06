@@ -1,3 +1,4 @@
+
 import java.util.Scanner;
 
 public class rincianKamar {
@@ -10,7 +11,6 @@ public class rincianKamar {
          String[] tipeKamar = { "Superior Deluxe Room", "Devaxa President Room", "Raden Salah Suite" };
          int jumlahKamarDiPesan=0;
 String next;
-
 boolean sedia;
 
 String kamar []= {"    ===============================\r\n" + //
