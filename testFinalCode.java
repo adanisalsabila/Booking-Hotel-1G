@@ -11,7 +11,7 @@ public class testFinalCode {
 
             layananTambahan = { "Extra Bed", "Makanan", null }, extraBed = new String[3], namaPemesan = new String[100],
             selectedRoomType = new String[100], kodePromo = { "A", "IJENMALANG", "IJEN11" },
-            kodeSudahDigunakan = new String[3],namaPenulis = new String[counterKS], kritik = new String[counterKS], saran = new String[counterKS];
+            kodeSudahDigunakan = new String[3],namaPenulis = new String[100], kritik = new String[100], saran = new String[100];
     static boolean lanjut, menu, isPromo, kodeTidakValid;
     static Scanner input = new Scanner(System.in);
     static int pilihMenu, pilihanKamar, jenisKamar, jumlahDewasa, jumlahAnak = 0, i, noRekening = 0, jumlahMalam = 0,
@@ -38,8 +38,9 @@ public class testFinalCode {
         
 
         // yg mungkin bisa dkerjakan tanpa bantuan
+
         // 2. Rincian tipe kamar dibuat array 2 dimensi
-        // 4. Billingual
+            // 4. Billingual
 
         //progress
  // 1. Array untuk kritik saran
@@ -900,7 +901,7 @@ public class testFinalCode {
         System.out.print("= Masukkan nama Anda: ");
         namaPenulis[counterKS] = input.nextLine();
         System.out.println("========================================================================");
-        System.out.println("==          Masukkan kritik fitur yang ingin Anda tambahkan:          ==");
+        System.out.println("==          Masukkan kritik & fitur yang ingin Anda tambahkan:          ==");
         System.out.println("========================================================================");
         System.out.print("= +==>: ");
         kritik[counterKS] = input.nextLine();
@@ -914,10 +915,7 @@ public class testFinalCode {
         System.out.println("========================================================================");
         System.out.println("= +==>            " + kritik[counterKS]);
 
-        System.out.println("========================================================================");
-        System.out.println("====                          Saran:                                ====");
-        System.out.println("========================================================================");
-        System.out.println("= +==>            " + saran[counterKS]);
+    
 counterKS++;
         tekanEnterKembaliKeMenu();
         // batas penambahan kode case
@@ -1232,28 +1230,27 @@ counterKS++;
     }
 
     public static void lihatKritikSaran() {
-        for (int j = 0; j < kamarDipesan.length; j++) {
-
+    
+    for (int i = 0; i < counterKS; i++) {
+        
+        System.out.println("\nMasukkan : "+(i+1));
+        System.out.println(
+            
+            "========================================================================");
+            System.out.println("Nama:             " + namaPenulis[i]);
             System.out.println(
-                    "\n========================================================================");
-            System.out.println("Nama: " + namaPenulis[counterKS]);
-            System.out.println(
-                    "========================================================================");
-            System.out.println(
+                "========================================================================");
+                System.out.println(
                     "====                          Kritik:                               ====");
-            System.out.println(
-                    "========================================================================");
-            System.out.println("= +==>            " + kritik[counterKS]);
-
-            System.out.println(
-                    "========================================================================");
-            System.out.println(
-                    "====                          Saran:                                ====");
-            System.out.println(
-                    "========================================================================");
-            System.out.println("= +==>            " + saran[counterKS]);
-            tekanEnterKembaliKeMenu();
-        }
+                    System.out.println(
+                        "========================================================================");
+                        System.out.println("= +==>            " + kritik[i]);
+                        
+                        
+                    }
+            
+     
+        tekanEnterKembaliKeMenu();
     }
 
     public static void fiturLaporan() {
