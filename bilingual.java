@@ -1106,7 +1106,7 @@ counterKS++;
                     System.out.println("6. View & Edit Reports");
                     System.out.println("00. Logout");
                     System.out.println("=======================================");
-                    System.out.print("     Pilih Menu 1/2/3/4/5/6 : ");
+                    System.out.print("     Choose Menu 1/2/3/4/5/6 : ");
                     int menuAdmin = input.nextInt();
                     input.nextLine();
 
@@ -1137,9 +1137,9 @@ counterKS++;
 
             } else {
                 System.out.println("===============================");
-                System.out.println("=        Login Gagal!        =");
+                System.out.println("=        Login Failed!        =");
                 System.out.println("===============================");
-                System.out.println("\nApakah anda ingin input kembali (Y/N)? : ");
+                System.out.println("\nWould you like to input again (Y/N)? : ");
                 keMenu = input.next();
                 if (keMenu.equalsIgnoreCase("Y")) {
                     lanjut = true;
@@ -1157,13 +1157,13 @@ counterKS++;
 
         do {
             lanjut = false;
-            System.out.println("\nList id kamar :");
+            System.out.println("\nList of room id :");
             for (int j = 0; j < kamarDipesan.length; j++) {
                 System.out.print(idKamar[j] + ". " + (tipeKamar[j]) + " : " + jumlahKamar[j]);
                 System.out.println();
             }
 
-            System.out.print("\nMasukkan Id Jenis Kamar yang akan diperbarui: ");
+            System.out.print("\nInput id of room that you want to change : ");
             int updateIdKamar = input.nextInt();
             int updateIndex = -1;
             input.nextLine();
@@ -1176,19 +1176,19 @@ counterKS++;
             }
 
             if (updateIndex != -1) {
-                System.out.print("Masukkan jumlah kamar: ");
+                System.out.print("Input the number of rooms: ");
                 jumlahKamar[updateIdKamar - 1] = input.nextInt();
                 input.nextLine();
 
-                System.out.println("\nId Kamar berhasil diperbarui: ");
-                System.out.println("\nList id kamar :");
+                System.out.println("\nRoom Id has been changed: ");
+                System.out.println("\nList of Room Id :");
                 for (int j = 0; j < kamarDipesan.length; j++) {
                     System.out.print(idKamar[j] + ". " + (tipeKamar[j]) + " : " + jumlahKamar[j]);
                     System.out.println();
                 }
             } else {
-                System.out.println("Kamar tidak ditemukan dengan ID: " + updateIdKamar);
-                System.out.println("\nApakah anda ingin input kembali (Y/N)? : ");
+                System.out.println("Can't find room with ID: " + updateIdKamar);
+                System.out.println("\nWould you like to input again (Y/N)? : ");
                 keMenu = input.nextLine();
                 if (keMenu.equalsIgnoreCase("Y")) {
                     lanjut = true;
@@ -1197,7 +1197,7 @@ counterKS++;
                 }
             }
 
-            System.out.println("\nApakah anda ingin input kembali (Y/N)? : ");
+            System.out.println("\nWould you like to input again (Y/N)? : ");
             keMenu = input.nextLine();
             if (keMenu.equalsIgnoreCase("Y")) {
                 lanjut = true;
@@ -1212,15 +1212,15 @@ counterKS++;
         do {
             lanjut = false;
 
-            System.out.print("Input Nama Hotel : ");
+            System.out.print("Enter Your Name : ");
             nama = input.nextLine();
-            System.out.print("Input nomor telepon : ");
+            System.out.print("Enter Your Phone Number : ");
             telepon = input.nextLine();
-            System.out.print("Input email : ");
+            System.out.print("Enter Your Email : ");
             email = input.nextLine();
 
             System.out.println(
-                    "\nApakah anda ingin input kembali (Y/N)? : ");
+                    "\nWould you like to input again (Y/N)? : ");
             keMenu = input.nextLine();
             if (keMenu.equalsIgnoreCase("Y")) {
                 lanjut = true;
@@ -1234,15 +1234,15 @@ counterKS++;
     
     for (int i = 0; i < counterKS; i++) {
         
-        System.out.println("\nMasukkan : "+(i+1));
+        System.out.println("\nEnter : "+(i+1));
         System.out.println(
             
             "========================================================================");
-            System.out.println("Nama:             " + namaPenulis[i]);
+            System.out.println("Name:             " + namaPenulis[i]);
             System.out.println(
                 "========================================================================");
                 System.out.println(
-                    "====                          Kritik:                               ====");
+                    "====                          Critics:                               ====");
                     System.out.println(
                         "========================================================================");
                         System.out.println("= +==>            " + kritik[i]);
@@ -1261,41 +1261,41 @@ counterKS++;
 
         do {
             lanjut = false;
-            System.out.println("\n1. Tampilkan Reservasi" +
-                    "\n2. Perbarui Reservasi" +
-                    "\n3. Hapus Reservasi" +
-                    "\n4. Kembali");
-            System.out.print("Masukkan pilihan Anda: ");
+            System.out.println("\n1. Show Reservation" +
+                    "\n2. Update Reservation" +
+                    "\n3. Delete Reservation" +
+                    "\n4. Exit");
+            System.out.print("Enter Your Choice: ");
             int choice = input.nextInt();
             input.nextLine();
             switch (choice) {
 
                 case 1:
                     if (totalBiaya[id - 1] != 0) {
-                        System.out.println("Semua Reservasi:");
+                        System.out.println("All Reservations:");
 
                         for (int i = 0; i <= id; i++) {
                             if (namaPemesan[i] != null && selectedRoomType[i] != null)
-                                System.out.println("ID Reservasi: " + idSave[idSave[i] - 1] +
-                                        ", Nama Tamu: " + namaPemesan[idSave[i] - 1] +
-                                        ", Jenis Kamar: " + selectedRoomType[idSave[i] - 1] +
-                                        ", Jumlah Kamar: " + jumlahKamarDiPesan[idSave[i] - 1] +
-                                        ", Total Bayar: " + totalBiaya[idSave[i] - 1]);
+                                System.out.println("Reservation ID: " + idSave[idSave[i] - 1] +
+                                        ", Guest Name: " + namaPemesan[idSave[i] - 1] +
+                                        ", Type Of Room: " + selectedRoomType[idSave[i] - 1] +
+                                        ", Total Rooms: " + jumlahKamarDiPesan[idSave[i] - 1] +
+                                        ", Bills: " + totalBiaya[idSave[i] - 1]);
                         }
                         for (int i = 0; i <= id; i++) {
                             totalPemasukan += totalBiaya[idSave[i] - 1];
                         }
                         System.out.println();
-                        System.out.println("-------------------------------    Total pemasukan dari pesanan kamar = "
+                        System.out.println("-------------------------------    Total income from room bookings = "
                                 + totalPemasukan + "     -------------------------------  ");
                     } else {
-                        System.out.println("\n== Belum ada data pemesanan yang telah masuk. ==");
+                        System.out.println("\n== No order data has been entered yet. ==");
 
                     }
                     tekanEnterKembaliKeSebelumnya();
                     break;
                 case 2:
-                    System.out.print("Masukkan ID reservasi yang akan diperbarui: ");
+                    System.out.print("Enter the reservation ID to be updated: ");
                     int updateId = input.nextInt();
                     int updateIndex = -1;
                     input.nextLine();
@@ -1308,25 +1308,25 @@ counterKS++;
                     }
 
                     if (updateIndex != -1) {
-                        System.out.print("Masukkan nama tamu: ");
+                        System.out.print("Enter Guest Name: ");
                         namaPemesan[updateIndex - 1] = input.next();
-                        System.out.print("Masukkan jenis kamar: ");
+                        System.out.print("Enter Type Of Room: ");
                         selectedRoomType[updateIndex - 1] = input.next();
-                        System.out.print("Masukkan jumlah kamar: ");
+                        System.out.print("Enter Total Rooms: ");
                         jumlahKamarDiPesan[updateIndex - 1] = input.nextInt();
 
-                        System.out.println("Reservasi berhasil diperbarui:\nID Reservasi: " +
+                        System.out.println("Reservation has been changed :\nReservation ID: " +
                                 idSave[updateIndex - 1] +
-                                ", Nama Tamu: " + namaPemesan[updateIndex - 1] +
-                                ", Jenis Kamar: " + selectedRoomType[updateIndex - 1] +
-                                ", Jumlah Kamar: " + numberOfRoomsList[updateIndex - 1]);
+                                ", Guest Name: " + namaPemesan[updateIndex - 1] +
+                                ", Type Of Room: " + selectedRoomType[updateIndex - 1] +
+                                ", Total Room: " + numberOfRoomsList[updateIndex - 1]);
                     } else {
-                        System.out.println("\nReservasi tidak ditemukan dengan ID: " + updateId);
+                        System.out.println("\nCan't find reservation with ID: " + updateId);
                     }
                     tekanEnterKembaliKeSebelumnya();
                     break;
                 case 3:
-                    System.out.print("Masukkan ID reservasi yang akan dihapus: ");
+                    System.out.print("Enter reservation ID to be deleted: ");
                     int deleteId = input.nextInt();
                     int deleteIndex = -1;
 
@@ -1348,9 +1348,9 @@ counterKS++;
 
                         id--;
 
-                        System.out.println("Reservasi berhasil dihapus dengan ID: " + deleteId);
+                        System.out.println("Reservation has been deleted with ID :" + deleteId);
                     } else {
-                        System.out.println("\nReservasi tidak ditemukan dengan ID: " + deleteId);
+                        System.out.println("\nCan't find reservation with ID: " + deleteId);
                     }
                     tekanEnterKembaliKeSebelumnya();
                     break;
@@ -1358,7 +1358,7 @@ counterKS++;
                     menu = true;
                     break;
                 default:
-                    System.out.println("Pilihan tidak valid. Harap masukkan opsi yang valid.");
+                    System.out.println("Invalid choice. Please enter the valid choice.");
             }
         } while (lanjut);
     }
