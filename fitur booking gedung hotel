@@ -1,0 +1,30 @@
+import java.util.Scanner;
+
+class HotelReservation {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
+        // Input jumlah lantai
+        System.out.print("Masukkan jumlah lantai hotel: ");
+        int jumlahLantai = input.nextInt();
+
+        // Input tanggal check-in
+        System.out.print("Masukkan tanggal check-in (format DD-MM-YYYY): ");
+        String tanggalCheckIn = input.next();
+
+        // Input durasi menginap
+        System.out.print("Masukkan jumlah hari menginap: ");
+        int durasiMenginap = input.nextInt();
+
+        // Menampilkan informasi reservasi
+        System.out.println("\nInformasi Reservasi:");
+        System.out.println("Jumlah Lantai: " + jumlahLantai);
+        System.out.println("Tanggal Check-in: " + tanggalCheckIn);
+        System.out.println("Durasi Menginap: " + durasiMenginap + " hari");
+
+        // Contoh pemrosesan lebih lanjut, misalnya pemesanan kamar, dll.
+        // ...
+
+        input.close();
+    }
+}
