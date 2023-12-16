@@ -119,21 +119,10 @@ static Scanner input = new Scanner(System.in);
                 pesanKamar();
                 break;
                 case 3:
-                pesanKamar();
+                deskripsiHotel();
                 break;
                 case 4:
-             //   fasilitasHotel();
-               System.out.println("\n=======================================");
-               System.out.println("=           Fasilitas Hotel :         =");
-               System.out.println("=======================================");
-               System.out.println();
-                    for (int j = 0; j < fasilitasHotel.length; j++) {
-                        System.out.println("= ^ "+ fasilitasHotel[j]);
-                    
-                    if (j == (fasilitasHotel.length/10))
-                    System.out.println("Tekan enter unutk lanjut");
-                    input.nextLine();
-                }
+                fasilitasHotel();
                 break;
                 case 5:
                 lokasiHotel();
@@ -354,15 +343,10 @@ public static void informasiHotel()
 
             switch (pilihMenu) {
                 case 1:
-               // deskripsiHotel();
-                System.out.println("Keterangan :\r\n" + //
-                        "Ijen Suites Resort & Convention Hotel menawarkan suasana luar biasa baik bagi pelancong bisnis maupun rekreasi di Malang."+
-                        "\nDengan kombinasi desain resor dan fasilitas konvensi, Ijen Suites Resort & Convention Hotel adalah pilihan tepat untuk kebutuhan acara dan akomodasi Anda."+
-                        "\nTerletak di salah satu kawasan paling bergengsi di Malang, Ijen Nirwana Residence, Ijen Suites Resort & Convention Hotel dikelilingi oleh banyak fasilitas untuk menunjang kebutuhan para tamu."+
-                        " Mall Olympic Garden yang menyediakan pusat perbelanjaan, minimarket, pusat kuliner, dan ATM hanya berjarak sepelemparan batu dari Ijen Suites Resort & Convention Hotel.");
-                break;
+                deskripsiHotel();
+               break;
                 case 2:
-                pesanKamar();
+                fasilitasHotel();
                 break;
                  case 3:
                 lokasiHotel();
@@ -370,7 +354,7 @@ public static void informasiHotel()
                 contactPerson(nama, email, telepon);
                 break;
                  case 0:
-                 menu = false;
+                 menuInformasi = false;
                 break;
                 default:
                  System.out.println("\nInput salah!");
@@ -382,6 +366,33 @@ public static void informasiHotel()
 
  
     }
+    
+// fungsi menampilkan deskripsi hotel
+public static void deskripsiHotel(){
+      System.out.println("Keterangan :\r\n" + //
+                        "Ijen Suites Resort & Convention Hotel menawarkan suasana luar biasa baik bagi pelancong bisnis maupun rekreasi di Malang."+
+                        "\nDengan kombinasi desain resor dan fasilitas konvensi, Ijen Suites Resort & Convention Hotel adalah pilihan tepat untuk kebutuhan acara dan akomodasi Anda."+
+                        "\nTerletak di salah satu kawasan paling bergengsi di Malang, Ijen Nirwana Residence, Ijen Suites Resort & Convention Hotel dikelilingi oleh banyak fasilitas untuk menunjang kebutuhan para tamu."+
+                        " Mall Olympic Garden yang menyediakan pusat perbelanjaan, minimarket, pusat kuliner, dan ATM hanya berjarak sepelemparan batu dari Ijen Suites Resort & Convention Hotel.");
+               
+}
+
+    // fungsi menampilkan semua fasilitas hotel
+public static void fasilitasHotel(){
+     System.out.println("\n=======================================");
+               System.out.println("=           Fasilitas Hotel :         =");
+               System.out.println("=======================================");
+            
+                    for (int j = 0; j < fasilitasHotel.length; j++) {
+                        System.out.println("= ^ "+ fasilitasHotel[j]);
+                    
+                    if  (j != 0 && j % 10 == 0){
+                    System.out.println("Tekan enter untuk lanjut");
+                    input.nextLine();
+                    System.out.println("=======================================");
+                }
+                }
+}
 
 
     // funsi halaman menu admin
@@ -900,7 +911,7 @@ jenisKamar=0;
 
         }
 
-        if (userUser != null && passUser != null) {
+        if (usernames[i] != null && passwords[i] != null) {
             do {
                 lanjut = false;
                 // awal penambahan kode case
@@ -1254,10 +1265,10 @@ jenisKamar=0;
 System.out.println("\nApakah anda ingin input kembali (Y/N)? : ");
        keMenu = input.next();
   if (keMenu.equalsIgnoreCase("N")) {
-    menu = true;
+    menu = false;
   }
 
-        } while (keMenu.equalsIgnoreCase("N"));
+        } while (keMenu.equalsIgnoreCase("Y"));
     }
 
     public static void kritikDanSaran() {
