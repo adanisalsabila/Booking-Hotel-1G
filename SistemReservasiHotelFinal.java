@@ -5,6 +5,8 @@ import java.time.LocalDate;
 
 public class SistemReservasiHotelFinal {
 
+    static String jenisAcara;
+    static int lantai, tanggalMulai, tanggalSelesai;
     public static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
     // untuk menyimpan dan mendeklarasikan "apakah iya Y/N" (keMenu, next,
     // isCekKamar, isExtraBed), menyimpan username dan password,input kode promo, &
@@ -985,6 +987,8 @@ public class SistemReservasiHotelFinal {
         }
     }
 
+   
+
     // fungsi fitur halaman admin dibawah ini
     public static void editKetersediaanKamar() {
 
@@ -1928,11 +1932,11 @@ public class SistemReservasiHotelFinal {
 
         // Input acara apa
         System.out.print("Masukkan jenis acara: ");
-        String jenisAcara = input.nextLine();
+        jenisAcara = input.nextLine();
 
         // Input lantai berapa
         System.out.print("Masukkan lantai gedung (1-" + NUM_FLOORS + "): ");
-        int lantai = input.nextInt();
+       lantai = input.nextInt();
         if (lantai < 1 || lantai > NUM_FLOORS) {
             System.out.println("Lantai tidak valid.");
             return;
@@ -1940,7 +1944,7 @@ public class SistemReservasiHotelFinal {
 
         // Input tanggal mulai
         System.out.print("Masukkan tanggal mulai (1-30): ");
-        int tanggalMulai = input.nextInt();
+       tanggalMulai = input.nextInt();
         if (tanggalMulai < 1 || tanggalMulai > 30) {
             System.out.println("Tanggal tidak valid.");
             return;
@@ -1948,7 +1952,7 @@ public class SistemReservasiHotelFinal {
 
         // Input tanggal selesai
         System.out.print("Masukkan tanggal selesai (tanggal harus setelah tanggal mulai): ");
-        int tanggalSelesai = input.nextInt();
+    tanggalSelesai = input.nextInt();
         if (tanggalSelesai < tanggalMulai || tanggalSelesai > 30) {
             System.out.println("Tanggal tidak valid.");
             return;
@@ -1993,6 +1997,29 @@ public class SistemReservasiHotelFinal {
 
                 input.nextLine();
     }
+
+      public static void strukSewaGedung(){
+          if (usernames[ID_USER - 1] != null && passwords[ID_USER - 1] != null) {
+
+            if (jenisAcara != null) {
+                System.out.println("\n======================================================");
+                System.out.println("===                 Detail Booking:                ===");
+                System.out.println("======================================================");
+                System.out.println("=    Jenis Acara:" + jenisAcara);
+                System.out.println("======================================================");
+                System.out.println("=    Lantai     : " + lantai );
+                System.out.println("======================================================");
+                System.out.println("=    Tanggal    : " +  tanggalMulai+"-"+ tanggalSelesai);
+                System.out.println("======================================================");
+                System.out.println("=    Total Biaya : Rp30.000.000 ");          
+                System.out.println("======================================================");
+                System.out.println("\n   ==== Terima kasih telah Sewa Gedung! ====    ");
+
+            System.out.println("Tekan enter untuk kembali.");
+            input.nextLine();
+        }
+    }
+     }
 }
 
 //billingual
