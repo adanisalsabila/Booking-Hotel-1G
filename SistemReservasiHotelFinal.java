@@ -115,6 +115,23 @@ public class SistemReservasiHotelFinal {
     // variabel menyimpan kembalian,diskon, total biaya, pembayaran
     static double kembalian, diskon, totalPemasukan = 0.0, pembayaran = 0.0;
 
+
+//     public static void pilihBahasa(){
+//  System.out.println("\n=================================================");
+//                 System.out.println("==                Pilih Bahasa:                 ==");
+//                 System.out.println("=================================================");
+//                   System.out.println("1. Bahasa Indonesia");
+//                 System.out.println("2. Bahasa Inggris");
+//                     System.out.println("==========================================");
+//                  System.out.print("= Pilih Bahasa : ");
+// int bahasa = input.nextInt();
+// if (bahasa == 1 ) {
+//     break;
+// } else if (bahasa == 2) {
+//     semuaFiturBINGl();
+// }
+//     }
+
     public static void pesanKamar() {
         diskon = 1;
         if (ID_USER == 0) {
@@ -1089,26 +1106,29 @@ public class SistemReservasiHotelFinal {
                 case 1:
                     System.out.println("Semua Reservasi:");
                     lanjut1 = true;
-                    for (int i = 0; i <= ID_SAVE.length; i++) {
-                        for (int j = 0; j < SAVE_HTG_PEMESANAN.length; j++) {
-                            if (totalBiaya[i][j] == 0) {
-                                System.out.println("\n== Belum ada data pemesanan yang telah masuk. ==");
-                                lanjut1 = false;
-                                System.out.println("\nTekan Enter untuk kembali. ");
-                                input.nextLine();
-                                break;
-                            }
-                        }
-                        break;
-                    }
+                    // for (int i = 0; i <= ID_SAVE.length; i++) {
+                    //     for (int j = 0; j < SAVE_HTG_PEMESANAN.length; j++) {
+                    //        if (tipeKamar[i][j] == null) {
+            
+                    //             System.out.println("\n== Belum ada data pemesanan yang telah masuk. ==");
+                    //             lanjut1 = false;
+                    //             System.out.println("\nTekan Enter untuk kembali. ");
+                    //             input.nextLine();
+                    //             break;
+                    //        }
+                    //     }
+                    //     break;
+                    // }
                     while (lanjut1) {
                         for (int i = 0; i < ID_SAVE.length; i++) {
                             for (int j = 0; j < SAVE_HTG_PEMESANAN.length; j++) {
                                 if (totalBiaya[i][j] != 0) {
                                     System.out.println("ID Reservasi: " + ID_SAVE[i] +
+                                    ", Nomor Pemesanan : " + SAVE_HTG_PEMESANAN[i] +
                                             ", Nama Tamu: " + namaLengkap[i] +
                                             ", Jenis Kamar: " + tipeKamarDipilih[i][j] +
                                             ", Jumlah Kamar: " + jumlahKamarDiPesan[i][j] +
+                                            ", Jumlah Malam: " + jumlahMalam[i][j]+
                                             ", Total Bayar: " + totalBiaya[i][j]);
                                 }
                             }
@@ -1126,6 +1146,7 @@ public class SistemReservasiHotelFinal {
                                 + totalPemasukan + "     -------------------------------  ");
 
                         tekanEnterKembaliKeSebelumnya();
+                        lanjut=false;
                     }
                     break;
                 case 2:
@@ -1384,7 +1405,9 @@ public class SistemReservasiHotelFinal {
                     menuLogin = false;
                     break;
                 default:
-                    System.out.println("Opsi tidak valid. Silakan pilih kembali.");
+                    System.out.print("Opsi tidak valid. ");
+                    System.out.println("\nTekan Enter untuk pilih kembali. ");
+        input.nextLine();
                     break;
             }
         } while (menuLogin);
@@ -1421,6 +1444,8 @@ public class SistemReservasiHotelFinal {
                 menuAdmin(args);
             } else {
                 System.out.println("\n== Username atau password salah. Silakan coba lagi. ==");
+                System.out.println("\nTekan Enter untuk kembali. ");
+        input.nextLine();
             }
         }
     }
@@ -1445,6 +1470,8 @@ public class SistemReservasiHotelFinal {
 
             if (isUsernameTaken) {
                 System.out.println("\n== Username sudah terdaftar. Silakan pilih username lain. ==");
+                System.out.println("\nTekan Enter untuk kembali. ");
+        input.nextLine();
             } else {
                 System.out.print("Masukkan Nama Lengkap : ");
                 String newNamaLengkap = input.nextLine();
@@ -1466,6 +1493,8 @@ public class SistemReservasiHotelFinal {
             }
         } else {
             System.out.println("\n== Maaf, jumlah user sudah mencapai batas maksimal. ==");
+            System.out.println("\nTekan Enter untuk kembali. ");
+        input.nextLine();
         }
     }
 
@@ -1930,8 +1959,12 @@ public class SistemReservasiHotelFinal {
             // Lakukan reservasi
             reservasiGedung(lantai, tanggalMulai, tanggalSelesai, jenisAcara);
             System.out.println("Reservasi berhasil!");
+             System.out.println("Tekan enter untuk kembali.");
+                input.nextLine();
         } else {
             System.out.println("Gedung tidak tersedia pada tanggal tersebut.");
+             System.out.println("Tekan enter untuk kembali.");
+                input.nextLine();
         }
     }
 
@@ -1958,7 +1991,12 @@ public class SistemReservasiHotelFinal {
         System.out.println("Reservasi untuk acara " + jenisAcara + " di lantai " + lantai +
                 " dari tanggal " + tanggalMulai + " sampai tanggal " + tanggalSelesai + ".");
 
-                System.out.println("Tekan enter untuk kembali.");
                 input.nextLine();
     }
 }
+
+//billingual
+// semuaFiturBINGl(){
+
+    
+// }
