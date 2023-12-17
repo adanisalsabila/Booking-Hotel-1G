@@ -1,9 +1,11 @@
 
 import java.util.Scanner;
+import java.time.format.DateTimeFormatter;
 import java.time.LocalDate;
 
 public class FinalCodeNew {
 
+    public static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
     // untuk menyimpan dan mendeklarasikan "apakah iya Y/N" (keMenu, next,
     // isCekKamar, isExtraBed), menyimpan username dan password,input kode promo, &
     // menyimpan inofrmasi contact person
@@ -78,6 +80,8 @@ public class FinalCodeNew {
     static String[] alamat = new String[100];
     static String[] namaLengkap = new String[100];
     static boolean[] isAdmin = new boolean[100];
+    static int NUM_FLOORS = 10;
+    static int[][] gedungStatus = new int[NUM_FLOORS][31]; // Menyimpan status reservasi gedung
     static int HTG_USER = 0;
     static int HTG_ADMIN = 0;
 
@@ -138,8 +142,7 @@ public class FinalCodeNew {
                 do {
 
                     lanjut = true;
-                    System.out.println(ID_USER - 1);
-                    System.out.println(HTG_PEMESANAN - 1);
+                    System.out.println("=================================================");
                     System.out.println("= Pilih tipe kamar: ");
                     for (int i = 0; i < tipeKamar.length; i++) {
                         System.out.println("=  " + (i + 1) + ". " + tipeKamar[i] + " - $" + hargaKamar[i]);
@@ -201,6 +204,8 @@ public class FinalCodeNew {
                 System.out.println("=================================================");
                 System.out.print("= Masukkan jumlah malam menginap : ");
                 jumlahMalam[ID_USER - 1][HTG_PEMESANAN - 1] = input.nextInt();
+
+                hitungHariBooking();
 
                 System.out.println("=================================================");
                 System.out.println("= Pilih layanan tambahan :");
@@ -1493,7 +1498,7 @@ public class FinalCodeNew {
                     pesanKamar();
                     break;
                 case 3:
-                    reservasiGedung();
+                    reservasiGedungHotel();
                     break;
                 case 4:
                     kritikDanSaran();
@@ -1515,10 +1520,6 @@ public class FinalCodeNew {
 
     }
 
-    // fitur reservasi gedung hotel
-    public static void reservasiGedung() {
-
-    }
 
     public static void informasiHotel() {
         do {
@@ -1837,25 +1838,23 @@ public class FinalCodeNew {
                     break;
                 case 2:
 
+                    System.out.println("\n=======================================");
+                    System.out.println("=               Perbarui Admin :            =");
+                    System.out.println("=======================================");
+                    System.out.println("Masukkan ID Admin :");
+                    int adminid = input.nextInt();
 
-                        System.out.println("\n=======================================");
-                        System.out.println("=               Perbarui Admin :            =");
-                        System.out.println("=======================================");
-                        System.out.println("Masukkan ID Admin :");
-                        int adminid = input.nextInt();
-
-                        if (adminuser[adminid] !=null) {
-                            for (int i = adminid; i < adminuser.length; i++) {
-                                System.out.print("Masukkan Username baru: ");
-                                 adminuser[i] = input.nextLine();
-                                System.out.print("Masukkan Password : ");
-                                 adminpass[i] = input.nextLine();
-                            } 
-                        } else {
-                            System.out.println("ID tidak ditemukan. ");
-                           
+                    if (adminuser[adminid] != null) {
+                        for (int i = adminid; i < adminuser.length; i++) {
+                            System.out.print("Masukkan Username baru: ");
+                            adminuser[i] = input.nextLine();
+                            System.out.print("Masukkan Password : ");
+                            adminpass[i] = input.nextLine();
                         }
-                               
+                    } else {
+                        System.out.println("ID tidak ditemukan. ");
+
+                    }
 
                     break;
                 case 0:
@@ -1869,4 +1868,97 @@ public class FinalCodeNew {
         } while (menuEditAdmin);
     }
 
+    public static void hitungHariBooking() {
+        // Meminta estimasi hari menginap
+ System.out.println("=================================================");
+        System.out.println("= Waktu Menginap : " + jumlahMalam[ID_USER - 1][HTG_PEMESANAN - 1] + " hari");
+
+        // Menerima input tanggal menginap
+         System.out.println("=================================================");
+        System.out.print("= Masukkan Tanggal Check In (dd/MM/yyyy) : ");
+        String inputTanggalCheckin = input.next(); // Membaca input tanggal
+        // Parsing input tanggal menginap menjadi objek LocalDate
+
+        LocalDate tanggalCheckin = LocalDate.parse(inputTanggalCheckin, formatter);// mengonversi input tanggal checkin
+                                                                                   // dari string ke objek LocalDate
+          System.out.println("=================================================");                                                                          
+        System.out.println("= Tanggal Check In : " + tanggalCheckin.format(formatter));
+
+        // Menghitung dan menampilkan tanggal checkout berdasarkan hari
+        LocalDate tanggalCheckout = tanggalCheckin.plusDays(jumlahMalam[ID_USER - 1][HTG_PEMESANAN - 1]);
+         System.out.println("=================================================");
+        System.out.println("= Tanggal Check Out : " + tanggalCheckout.format(formatter));
+    }
+
+    public static void reservasiGedungHotel() {
+       
+
+        System.out.println("=======================================");
+        System.out.println("        Reservasi Gedung Hotel        ");
+        System.out.println("=======================================");
+
+        // Input acara apa
+        System.out.print("Masukkan jenis acara: ");
+        String jenisAcara = input.nextLine();
+
+        // Input lantai berapa
+        System.out.print("Masukkan lantai gedung (1-" + NUM_FLOORS + "): ");
+        int lantai = input.nextInt();
+        if (lantai < 1 || lantai > NUM_FLOORS) {
+            System.out.println("Lantai tidak valid.");
+            return;
+        }
+
+        // Input tanggal mulai
+        System.out.print("Masukkan tanggal mulai (1-30): ");
+        int tanggalMulai = input.nextInt();
+        if (tanggalMulai < 1 || tanggalMulai > 30) {
+            System.out.println("Tanggal tidak valid.");
+            return;
+        }
+
+        // Input tanggal selesai
+        System.out.print("Masukkan tanggal selesai (tanggal harus setelah tanggal mulai): ");
+        int tanggalSelesai = input.nextInt();
+        if (tanggalSelesai < tanggalMulai || tanggalSelesai > 30) {
+            System.out.println("Tanggal tidak valid.");
+            return;
+        }
+
+        // Cek ketersediaan gedung
+        if (cekKetersediaanGedung(lantai, tanggalMulai, tanggalSelesai)) {
+            // Lakukan reservasi
+            reservasiGedung(lantai, tanggalMulai, tanggalSelesai, jenisAcara);
+            System.out.println("Reservasi berhasil!");
+        } else {
+            System.out.println("Gedung tidak tersedia pada tanggal tersebut.");
+        }
+    }
+
+    // Fungsi untuk mengecek ketersediaan gedung pada tanggal tertentu di lantai
+   
+    static boolean cekKetersediaanGedung(int lantai, int tanggalMulai, int tanggalSelesai) {
+        for (int tanggal = tanggalMulai; tanggal <= tanggalSelesai; tanggal++) {
+            if (gedungStatus[lantai - 1][tanggal] == 1) {
+                return false; // Gedung sudah dipesan pada tanggal tersebut
+            }
+        }
+        return true; // Gedung tersedia pada tanggal tersebut
+    }
+
+    // Fungsi untuk melakukan reservasi gedung pada tanggal tertentu di lantai
+   
+    static void reservasiGedung(int lantai, int tanggalMulai, int tanggalSelesai, String jenisAcara) {
+        for (int tanggal = tanggalMulai; tanggal <= tanggalSelesai; tanggal++) {
+            gedungStatus[lantai - 1][tanggal] = 1; // Menandakan gedung sudah dipesan pada tanggal tersebut
+        }
+
+        // Tambahkan logika lain yang diperlukan untuk menyimpan informasi reservasi
+
+        System.out.println("Reservasi untuk acara " + jenisAcara + " di lantai " + lantai +
+                " dari tanggal " + tanggalMulai + " sampai tanggal " + tanggalSelesai + ".");
+
+                System.out.println("Tekan enter untuk kembali.");
+                input.nextLine();
+    }
 }
